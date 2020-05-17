@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,19 +12,30 @@ import {
    AuthServiceConfig,
    GoogleLoginProvider
  } from 'angularx-social-login';
- import { getAuthServiceConfigs } from './socialLoginConfig';
+import { getAuthServiceConfigs } from './socialLoginConfig';
+import { HeaderComponent } from './header/header.component';
+import { AuthService } from './_services/auth.service';
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
    declarations: [
       AppComponent,
-      AuthComponent
+      AuthComponent,
+      HeaderComponent,
+      HomeComponent,
+      RegisterComponent
    ],
    imports: [
       BrowserModule,
+      HttpClientModule,
       AppRoutingModule,
-      SocialLoginModule.initialize(getAuthServiceConfigs())
+      SocialLoginModule.initialize(getAuthServiceConfigs()),
+      FormsModule
    ],
-   providers: [],
+   providers: [
+      AuthService
+   ],
    bootstrap: [
       AppComponent
    ]
