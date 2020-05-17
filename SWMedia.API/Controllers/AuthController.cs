@@ -28,7 +28,9 @@ namespace SWMedia.API.Controllers
 
             var userToCreate = new User
             {
-                Username = userForRegisterDto.Username
+                Username = userForRegisterDto.Username,
+                Email = userForRegisterDto.Email,
+                Phone = userForRegisterDto.Phone
             };
             
             var createdUser = await _repo.RegisterUser(userToCreate, userForRegisterDto.Password);

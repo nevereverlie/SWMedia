@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SWMedia-SPA"
+    }
+  },
+  "defaultProject": "SWMedia-SPA",
+  "cli": {
+    "analytics": "c7c1f689-c75d-499a-8d80-cca836a7d6a0"
+  }
 }
