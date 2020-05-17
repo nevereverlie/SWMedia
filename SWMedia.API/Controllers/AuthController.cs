@@ -46,7 +46,7 @@ namespace SWMedia.API.Controllers
             return Ok(createdUser);
         }
 
-        [HttpPost("login")]
+        [HttpPost("loginUser")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
             var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
