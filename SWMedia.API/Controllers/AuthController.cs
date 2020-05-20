@@ -48,7 +48,7 @@ namespace SWMedia.API.Controllers
 
         [HttpPost("loginUser")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
-        {
+        {  
             var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
