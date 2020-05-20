@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService as _AuthService, GoogleLoginProvider } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
-constructor(private http: HttpClient ) { }
+constructor(private http: HttpClient, private socialAuthService: _AuthService ) { }
 
 login(model: any) {
   return this.http.post(this.baseUrl + 'loginUser', model)
@@ -35,5 +36,21 @@ loggedIn() {
   const token = localStorage.getItem('token');
   return !this.jwtHelper.isTokenExpired(token);
 }
+
+signinWithGoogle () {
+  let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+
+  this.socialAuthService.signIn(socialPlatformProvider)
+  .then((userData) => {
+    if (userData) {
+      localStorage.setItem('token', userData.idToken);
+      this.decodedToken = this.jwtHelper.decodeToken(userData.idToken);
+      return this.http.post(this.baseUrl + 'loginGoogleUser', userData); //add this method in the API
+    }
+  }, error => {
+    console.log(error);
+  });
+}
+
 
 }

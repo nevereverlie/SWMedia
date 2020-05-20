@@ -6,7 +6,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 
 import {
    SocialLoginModule,
@@ -24,7 +23,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
    declarations: [
       AppComponent,
-      AuthComponent,
       HeaderComponent,
       HomeComponent,
       RegisterComponent

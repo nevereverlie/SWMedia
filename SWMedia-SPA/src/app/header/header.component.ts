@@ -31,4 +31,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     this.alertify.message('Logged out');
   }
+
+  signinWithGoogle() {
+    this.authService.signinWithGoogle(); //доделать метод для API, чтобы можно было подписаться и инжектить alertify
+  }
 }
