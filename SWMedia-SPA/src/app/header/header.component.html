@@ -1,15 +1,15 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">Star Wars Media</a>
+    <a class="navbar-brand" [routerLink]="['/home']">Star Wars Media</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Marketplace</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/shop']">Marketplace</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Films</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/films']">Films</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Chat</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/chat']">Chat</a>
       </li>
     </ul>
 

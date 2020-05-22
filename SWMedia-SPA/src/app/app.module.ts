@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { RouterModule } from '@angular/router';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,13 +21,20 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShopComponent } from './shop/shop.component';
+import { FilmsComponent } from './films/films.component';
+import { ChatComponent } from './chat/chat.component';
+import { appRoutes } from './routes';
 
 @NgModule({
    declarations: [
       AppComponent,
       HeaderComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      ShopComponent,
+      FilmsComponent,
+      ChatComponent
    ],
    imports: [
       BrowserModule,
@@ -34,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       SocialLoginModule.initialize(getAuthServiceConfigs()),
       FormsModule,
       BrowserAnimationsModule,
-      BsDropdownModule.forRoot()
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes)
    ],
    providers: [
       AuthService,
