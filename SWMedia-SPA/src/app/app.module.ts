@@ -15,26 +15,30 @@ import {
    GoogleLoginProvider
  } from 'angularx-social-login';
 import { getAuthServiceConfigs } from './socialLoginConfig';
-import { HeaderComponent } from './header/header.component';
 import { AuthService } from './_services/auth.service';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopComponent } from './shop/shop.component';
 import { FilmsComponent } from './films/films.component';
 import { ChatComponent } from './chat/chat.component';
 import { routes } from './app-routing.module'; 
+import { RegisterComponent } from './register/register.component';
+import { HeaderComponent } from './header/header.component';
+import { ShopNavComponent } from './shop/shop-nav/shop-nav.component';
+import { FilmsNavComponent } from './films/films-nav/films-nav.component';
+import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 
 @NgModule({
    declarations: [
       AppComponent,
-      HeaderComponent,
-      HomeComponent,
-      RegisterComponent,
       ShopComponent,
       FilmsComponent,
-      ChatComponent
+      ChatComponent,
+      RegisterComponent,
+      HeaderComponent,
+      ShopNavComponent,
+      FilmsNavComponent,
+      ShopCategoriesComponent
    ],
    imports: [
       BrowserModule,

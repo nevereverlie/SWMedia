@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   model: any = {};
+  registerMode = false;
 
   constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
 
@@ -36,5 +37,13 @@ export class HeaderComponent implements OnInit {
     // .subscribe(response => {
     //   console.log(response);
     // });
+  }
+
+  registerToggle() {
+    this.registerMode = true;
+  }
+
+  cancelRegistrationMode(registerMode: boolean) {
+    this.registerMode = registerMode;
   }
 }

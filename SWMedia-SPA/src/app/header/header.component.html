@@ -3,7 +3,7 @@
     <a class="navbar-brand" [routerLink]="['/home']">Star Wars Media</a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/shop']">Marketplace</a>
+        <a class="nav-link" [routerLink]="['/shop/categories']">Marketplace</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/films']">Films</a>
@@ -66,3 +66,23 @@
     </form>
   </div>
 </nav>
+
+
+<div class="container mt-5">
+  <div *ngIf="!registerMode" style="text-align: center">
+    <h1>Star Wars Media</h1>
+    <p class="lead">There will be 3 columns for other pages</p>
+    <div class="text-center">
+      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
+    </div>
+  </div>
+
+  <div *ngIf="registerMode" class="container">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <app-register (cancelRegistration)="cancelRegistrationMode($event)"></app-register>
+      </div>
+    </div>
+  </div>
+</div>
+
