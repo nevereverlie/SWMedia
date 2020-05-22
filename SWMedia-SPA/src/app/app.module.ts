@@ -24,7 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopComponent } from './shop/shop.component';
 import { FilmsComponent } from './films/films.component';
 import { ChatComponent } from './chat/chat.component';
-import { appRoutes } from './routes';
+import { routes } from './app-routing.module'; 
 
 @NgModule({
    declarations: [
@@ -44,7 +44,7 @@ import { appRoutes } from './routes';
       FormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(routes)
    ],
    providers: [
       AuthService,

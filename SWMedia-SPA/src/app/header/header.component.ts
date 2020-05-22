@@ -24,10 +24,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  loggedIn() {
-    return this.authService.loggedIn();
-  }
-
   logout() {
     localStorage.removeItem('token');
     this.alertify.message('Logged out');
@@ -35,6 +31,10 @@ export class HeaderComponent implements OnInit {
   }
 
   signinWithGoogle() {
-    this.authService.signinWithGoogle(); //доделать метод для API, чтобы можно было подписаться и инжектить alertify
+    this.authService.signinWithGoogle();
+    
+    // .subscribe(response => {
+    //   console.log(response);
+    // });
   }
 }

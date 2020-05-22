@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SWMedia-master\\swmedia.api\\SWMedia.API.csproj": {}
+    "C:\\Users\\nazar\\Desktop\\SWMedia_proj\\SWMedia.API\\SWMedia.API.csproj": {}
   },
   "projects": {
-    "C:\\SWMedia-master\\swmedia.api\\SWMedia.API.csproj": {
+    "C:\\Users\\nazar\\Desktop\\SWMedia_proj\\SWMedia.API\\SWMedia.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SWMedia-master\\swmedia.api\\SWMedia.API.csproj",
+        "projectUniqueName": "C:\\Users\\nazar\\Desktop\\SWMedia_proj\\SWMedia.API\\SWMedia.API.csproj",
         "projectName": "SWMedia.API",
-        "projectPath": "C:\\SWMedia-master\\swmedia.api\\SWMedia.API.csproj",
-        "packagesPath": "C:\\Users\\Danilda\\.nuget\\packages\\",
-        "outputPath": "C:\\SWMedia-master\\swmedia.api\\obj\\",
+        "projectPath": "C:\\Users\\nazar\\Desktop\\SWMedia_proj\\SWMedia.API\\SWMedia.API.csproj",
+        "packagesPath": "C:\\Users\\nazar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nazar\\Desktop\\SWMedia_proj\\SWMedia.API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Danilda\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\nazar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

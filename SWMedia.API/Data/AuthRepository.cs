@@ -13,9 +13,14 @@ namespace SWMedia.API.Data
         {
             _context = context;
         }
-        public Task<GoogleUser> LoginGoogleUser(string username)
+        public async Task<GoogleUser> LoginGoogleUser(string email)
         {
-            throw new System.NotImplementedException();
+            var user = await _context.GoogleUsers.FirstOrDefaultAsync(x => x.Email == email);
+
+            if (user == null)
+                return null;
+
+            return user;
         }
 
         public async Task<User> LoginUser(string username, string password)
@@ -45,9 +50,12 @@ namespace SWMedia.API.Data
             return true;
         }
 
-        public Task<GoogleUser> RegisterGoogleUser(GoogleUser googleUser)
+        public async Task<GoogleUser> RegisterGoogleUser(GoogleUser googleUser)
         {
-            throw new System.NotImplementedException();
+            await _context.GoogleUsers.AddAsync(googleUser);
+            await _context.SaveChangesAsync();
+
+            return googleUser;
         }
 
         public async Task<User> RegisterUser(User user, string password)
@@ -77,6 +85,15 @@ namespace SWMedia.API.Data
         public async Task<bool> UserExists(string username)
         {
             if(await _context.Users.AnyAsync(u => u.Username == username))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> GoogleUserExists(string email)
+        {
+            if(await _context.GoogleUsers.AnyAsync(u => u.Email == email))
             {
                 return true;
             }

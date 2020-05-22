@@ -3,6 +3,8 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService as _AuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { from } from 'rxjs';
+import { AlertifyService } from './alertify.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +14,33 @@ export class AuthService {
   jwtHelper = new JwtHelperService();
   decodedToken: any;
 
-constructor(private http: HttpClient, private socialAuthService: _AuthService ) { }
+  constructor(private http: HttpClient, private socialAuthService: _AuthService, private alertify: AlertifyService ) { }
 
-login(model: any) {
-  return this.http.post(this.baseUrl + 'loginUser', model)
+  login(model: any) {
+    return this.http.post(this.baseUrl + 'loginUser', model)
+      .pipe(
+        map((response: any) => {
+          const user = response;
+          if (user) {
+            localStorage.setItem('token', user.token);
+            this.decodedToken = this.jwtHelper.decodeToken(user.token);
+          }
+        })
+      );
+  }
+
+  register(model:any) {
+    return this.http.post(this.baseUrl + 'registerUser', model);
+  }
+
+
+  loggedIn() {
+    const token = localStorage.getItem('token');
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  sendData(googleUser: any){
+    return this.http.post(this.baseUrl + 'loginGoogleUser', googleUser)
     .pipe(
       map((response: any) => {
         const user = response;
@@ -25,32 +50,27 @@ login(model: any) {
         }
       })
     );
-}
+  }
 
-register(model:any) {
-  return this.http.post(this.baseUrl + 'registerUser', model);
-}
+  signinWithGoogle () {
+    let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
 
-
-loggedIn() {
-  const token = localStorage.getItem('token');
-  return !this.jwtHelper.isTokenExpired(token);
-}
-
-signinWithGoogle () {
-  let socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-
-  this.socialAuthService.signIn(socialPlatformProvider)
-  .then((userData) => {
-    if (userData) {
-      localStorage.setItem('token', userData.idToken);
-      this.decodedToken = this.jwtHelper.decodeToken(userData.idToken);
-      return this.http.post(this.baseUrl + 'loginGoogleUser', userData); //add this method in the API
-    }
-  }, error => {
-    console.log(error);
-  });
-}
-
+    this.socialAuthService.signIn(socialPlatformProvider)
+    .then((userData) => {
+      if (userData) {
+        this.decodedToken = this.jwtHelper.decodeToken(userData.idToken);
+        let googleUser = {firstName: this.decodedToken.given_name,
+          lastName: this.decodedToken.family_name,
+          email: this.decodedToken.email};
+        console.log(googleUser);
+        this.sendData(googleUser).subscribe(response => {
+          this.alertify.success("Successfully logged in via Google");
+          console.log(response);
+        });
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
 
 }

@@ -8,7 +8,8 @@ namespace SWMedia.API.Data
         Task<User> RegisterUser(User user, string password);
         Task<GoogleUser> RegisterGoogleUser(GoogleUser googleUser);
         Task<bool> UserExists(string username);
+        Task<bool> GoogleUserExists(string email);
         Task<User> LoginUser(string username, string password);
-        Task<GoogleUser> LoginGoogleUser(string username);
+        Task<GoogleUser> LoginGoogleUser(string email);
     }
 }

@@ -13,9 +13,9 @@
       </li>
     </ul>
 
-    <div *ngIf="loggedIn()" class="dropdown" dropdown>
+    <div *ngIf="this.authService.loggedIn();" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome, {{ authService.decodedToken?.unique_name || authService.decodedToken?.name | titlecase }}
+        Welcome, {{ authService.decodedToken?.given_name || authService.decodedToken?.unique_name  | titlecase }}
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
@@ -28,7 +28,7 @@
     </div>
 
     <form
-      *ngIf="!loggedIn()"
+      *ngIf="!this.authService.loggedIn();"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0 mw-100"
       (ngSubmit)="login()"
