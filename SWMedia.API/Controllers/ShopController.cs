@@ -25,5 +25,12 @@ namespace SWMedia.API.Controllers
             var products = await _repo.GetProductsFromCategory(categoryName);
             return Ok(products);
         }
+
+        [HttpGet("categories/{categoryName}/{productId}")]
+        public async Task<IActionResult> GetProduct(int productId)
+        {
+            var product = await _repo.GetProduct(productId);
+            return Ok(product);
+        }
     }
 }

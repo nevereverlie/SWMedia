@@ -21,13 +21,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopComponent } from './shop/shop.component';
 import { FilmsComponent } from './films/films.component';
 import { ChatComponent } from './chat/chat.component';
-import { routes } from './app-routing.module'; 
+import { routes } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { ShopNavComponent } from './shop/shop-nav/shop-nav.component';
 import { FilmsNavComponent } from './films/films-nav/films-nav.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
+import { ShopProductComponent } from './shop/shop-product/shop-product.component';
 
 @NgModule({
    declarations: [
@@ -40,7 +41,8 @@ import { ShopCategoryComponent } from './shop/shop-category/shop-category.compon
       ShopNavComponent,
       FilmsNavComponent,
       ShopCategoriesComponent,
-      ShopCategoryComponent
+      ShopCategoryComponent,
+      ShopProductComponent
    ],
    imports: [
       BrowserModule,

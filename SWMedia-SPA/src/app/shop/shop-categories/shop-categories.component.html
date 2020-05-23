@@ -1,8 +1,5 @@
-
 <div class="row">
-  <div *ngFor="let category of categories" class="col-sm-3" style="height: 200px; color: white; background-color: rgb(60,60,60); border: 1px solid rgb(170,170,170);">
-    <a [routerLink]="[category.categoryName]" routerLinkActive="router-link-active"  routerLinkActive="router-link-active" >{{category.categoryName}}</a>
+  <div id="categoryCard" *ngFor="let category of categories" class="col-lg-3 ml-5 mt-5 transition" [ngStyle]="{'background-image': 'url(' + category.categoryUrl + ')'}" [routerLink]="[category.categoryName]" routerLinkActive="router-link-active" style="">
+    <a style="color: white" >{{category.categoryName}}</a>
   </div>
-  
-  
 </div>

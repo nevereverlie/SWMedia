@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SWMedia.API.Data;
 
 namespace SWMedia.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200523194503_CategoryUrl")]
+    partial class CategoryUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,9 +69,6 @@ namespace SWMedia.API.Migrations
 
                     b.Property<double>("Price")
                         .HasColumnType("REAL");
-
-                    b.Property<string>("ProductImageUrl")
-                        .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
 

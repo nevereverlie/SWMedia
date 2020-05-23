@@ -7,6 +7,7 @@ import { FilmsComponent } from './films/films.component';
 import { HeaderComponent } from './header/header.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
+import { ShopProductComponent } from './shop/shop-product/shop-product.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,8 @@ export const routes: Routes = [
         children: [
           { path: 'categories', component: ShopCategoriesComponent},
           { path: 'categories/:category', component: ShopCategoryComponent},
-          { path: '', redirectTo: 'categories', pathMatch: 'full'},
+          { path: 'categories/:category/:productId', component: ShopProductComponent },
+          { path: '', redirectTo: 'categories', pathMatch: 'full'}
         ]
       },
       { path: 'chat', component: ChatComponent},
