@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-  baseUrl = 'http://localhost:5000/api/shop/';
+  baseUrl = environment.apiUrl + 'shop/';
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +16,11 @@ export class ShopService {
 
   GetProductsFromCategory(categoryName: string) {
     return this.http.get(this.baseUrl + 'categories/' + categoryName);
+  }
+
+  GetProduct(categoryName: string, productId: number)
+  {
+    return this.http.get(this.baseUrl + 'categories/' + categoryName + '/' + productId);
   }
 
 }

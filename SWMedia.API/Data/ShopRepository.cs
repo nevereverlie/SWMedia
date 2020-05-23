@@ -29,9 +29,13 @@ namespace SWMedia.API.Data
             return await products.ToListAsync();
         }
 
-        public Task<List<Product>> GetProducts()
+        public async Task<List<Product>> GetProduct(int id)
         {
-            throw new System.NotImplementedException();
+            var product = 
+                from p in _context.Products
+                where p.ProductId == id
+                select p;
+            return await product.ToListAsync();
         }
 
     }

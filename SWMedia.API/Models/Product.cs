@@ -7,5 +7,6 @@ namespace SWMedia.API.Models
         public double Price { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public string ProductImageUrl { get; set; }
     }
 }

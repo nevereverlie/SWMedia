@@ -1,0 +1,17 @@
+#categoryCard {
+  height: 300px;
+  color: white;
+  background-color: rgb(60, 60, 60);
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 1rem;
+  background-size: cover;
+  cursor: pointer;
+  opacity: 50%;
+}
+#categoryCard:hover {
+  opacity: 100%;
+}
+.transition {
+  transition: 1s;
+}
+

@@ -16,7 +16,6 @@ export class ShopCategoriesComponent implements OnInit {
 
   GetCategories() {
     this.shopService.GetCategories().subscribe(response => {
-      console.log(response);
       this.categories = response;
     });
   }

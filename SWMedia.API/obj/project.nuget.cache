@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CjoZJ/FHRDRAKBFXgiONS+pEZkR+q0BEf0DxQNs+wdMZA3PxMNT+sFhCmIDBpBhloiHRSkdjqdy7LRBWxt52Rw==",
+  "dgSpecHash": "RLubpLL+YIu1i/vcS0bv2lxiTsn5hv0aE3BQg79/su6jq1VM8DpdCpmucwNXkubXEPKNpBOt6QsZ7O6PnS45Lw==",
   "success": true,
-  "projectFilePath": "C:\\SWMedia-master\\swmedia.api\\SWMedia.API.csproj",
+  "projectFilePath": "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danilda\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.0.0\\microsoft.aspnetcore.authentication.jwtbearer.3.0.0.nupkg.sha512",
     "C:\\Users\\Danilda\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
