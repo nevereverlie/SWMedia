@@ -6,6 +6,7 @@ namespace SWMedia.API.Data
 {
     public interface IShopRepository
     {
-        Task<List<TShirt>> GetTShirts();
+        Task<List<Product>> GetProducts();
+        Task<List<Category>> GetCategories();
     }
 }

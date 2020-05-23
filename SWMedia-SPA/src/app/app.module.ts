@@ -27,6 +27,7 @@ import { HeaderComponent } from './header/header.component';
 import { ShopNavComponent } from './shop/shop-nav/shop-nav.component';
 import { FilmsNavComponent } from './films/films-nav/films-nav.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
+import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
 
 @NgModule({
    declarations: [
@@ -38,7 +39,8 @@ import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.
       HeaderComponent,
       ShopNavComponent,
       FilmsNavComponent,
-      ShopCategoriesComponent
+      ShopCategoriesComponent,
+      ShopCategoryComponent
    ],
    imports: [
       BrowserModule,

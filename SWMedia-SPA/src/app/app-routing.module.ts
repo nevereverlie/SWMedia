@@ -6,6 +6,7 @@ import { ChatComponent } from './chat/chat.component';
 import { FilmsComponent } from './films/films.component';
 import { HeaderComponent } from './header/header.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
+import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
 
 
 export const routes: Routes = [
@@ -18,15 +19,19 @@ export const routes: Routes = [
       { path: 'main', component: HeaderComponent},
       { path: 'shop', component: ShopComponent,
         children: [
-          { path: '', component: ShopCategoriesComponent },
-          { path: 'categories', component: ShopCategoriesComponent }
+          { path: 'categories', component: ShopCategoriesComponent,
+            children: [
+              { path: ':category', component: ShopCategoryComponent}
+            ]
+          },
+          { path: '', redirectTo: 'categories', pathMatch: 'full'},
         ]
       },
       { path: 'chat', component: ChatComponent},
       { path: 'films', component: FilmsComponent}
     ]
   },
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  //{ path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
