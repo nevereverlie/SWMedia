@@ -19,5 +19,11 @@ namespace SWMedia.API.Controllers
             var categories = await _repo.GetCategories();
             return Ok(categories);
         }
+        [HttpGet("categories/{categoryName}")]
+        public async Task<IActionResult> GetProductsFromCategory(string categoryName)
+        {
+            var products = await _repo.GetProductsFromCategory(categoryName);
+            return Ok(products);
+        }
     }
 }

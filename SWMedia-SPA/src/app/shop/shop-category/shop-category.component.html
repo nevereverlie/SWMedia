@@ -1,3 +1,10 @@
-<p>
-  shop-category works!
-</p>
+
+<div class="row">
+  <div *ngFor="let product of products" class="col-sm-3" style="height: 200px; color: white; background-color: rgb(60,60,60); border: 1px solid rgb(170,170,170);">
+    <span>Product: {{product.description}}</span>
+    <br>
+    <span>Price: {{product.price}}</span>
+  </div>
+  
+  
+</div>

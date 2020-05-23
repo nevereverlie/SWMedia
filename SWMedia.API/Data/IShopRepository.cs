@@ -8,5 +8,6 @@ namespace SWMedia.API.Data
     {
         Task<List<Product>> GetProducts();
         Task<List<Category>> GetCategories();
+        Task<List<Product>> GetProductsFromCategory(string categoryName);
     }
 }

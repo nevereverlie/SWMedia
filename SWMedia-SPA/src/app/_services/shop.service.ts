@@ -13,4 +13,8 @@ export class ShopService {
     return this.http.get(this.baseUrl + 'categories');
   }
 
+  GetProductsFromCategory(categoryName: string) {
+    return this.http.get(this.baseUrl + 'categories/' + categoryName);
+  }
+
 }

@@ -19,11 +19,8 @@ export const routes: Routes = [
       { path: 'main', component: HeaderComponent},
       { path: 'shop', component: ShopComponent,
         children: [
-          { path: 'categories', component: ShopCategoriesComponent,
-            children: [
-              { path: ':category', component: ShopCategoryComponent}
-            ]
-          },
+          { path: 'categories', component: ShopCategoriesComponent},
+          { path: 'categories/:category', component: ShopCategoryComponent},
           { path: '', redirectTo: 'categories', pathMatch: 'full'},
         ]
       },

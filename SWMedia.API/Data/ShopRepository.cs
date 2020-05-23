@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SWMedia.API.Models;
@@ -17,9 +18,21 @@ namespace SWMedia.API.Data
             return await _context.Categories.ToListAsync();
         }
 
+        public async Task<List<Product>> GetProductsFromCategory(string categoryName)
+        {
+            var products = 
+                from p in _context.Products
+                join c in _context.Categories on p.CategoryId equals c.CategoryId
+                where c.CategoryName == categoryName
+                select p;
+            //return await products.Include(p => p.Category).ToListAsync();
+            return await products.ToListAsync();
+        }
+
         public Task<List<Product>> GetProducts()
         {
             throw new System.NotImplementedException();
         }
+
     }
 }
