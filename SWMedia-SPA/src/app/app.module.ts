@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +31,16 @@ import { FilmsNavComponent } from './films/films-nav/films-nav.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
 import { ShopProductComponent } from './shop/shop-product/shop-product.component';
+import { AlertifyService } from './_services/alertify.service';
+import { AuthGuard } from './_guards/auth.guard';
+import { ShopService } from './_services/shop.service';
+import { ProductResolver } from './_resolvers/product.resolver';
+import { CategoriesResolver } from './_resolvers/categories.resolver';
+import { CategoryResolver } from './_resolvers/category.resolver';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -52,11 +64,24 @@ import { ShopProductComponent } from './shop/shop-product/shop-product.component
       FormsModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(routes)
+      RouterModule.forRoot(routes),
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: tokenGetter,
+          whitelistedDomains: ['localhost:5000'],
+          blacklistedRoutes: ['localhost:5000/api/auth']
+        }
+      })
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      AlertifyService,
+      AuthGuard,
+      ShopService,
+      ProductResolver,
+      CategoriesResolver,
+      CategoryResolver
    ],
    bootstrap: [
       AppComponent

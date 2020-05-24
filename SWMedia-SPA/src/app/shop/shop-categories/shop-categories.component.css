@@ -10,8 +10,10 @@
 }
 #categoryCard:hover {
   opacity: 100%;
+  transform: scale(1.2, 1.2);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
 }
 .transition {
   transition: 1s;
 }
-

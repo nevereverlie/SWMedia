@@ -1,5 +1,25 @@
-<div class="container">
-  <div class="images">
-    <span>{{product[0].description}}, {{product[0].productImageUrl}}</span>   <!--тут крч возвращается 1 продукт, а в апишке он как бы ToListAsync(), поэтому я спать пошел, уже 1:45 и я не помню последние 20 минут моей жизни ъуъ-->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{product.productImageUrl}}" alt="{{product.description}}">
+        <div class="card-body">
+          <div>
+            <strong>Description: </strong>
+            <p>{{product.description}}</p>
+          </div>
+          <div>
+            <strong>Price: </strong>
+            <p>{{product.price}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary">To cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+
+    </div>
   </div>
 </div>

@@ -29,13 +29,11 @@ namespace SWMedia.API.Data
             return await products.ToListAsync();
         }
 
-        public async Task<List<Product>> GetProduct(int id)
+        public async Task<Product> GetProduct(int id)
         {
-            var product = 
-                from p in _context.Products
-                where p.ProductId == id
-                select p;
-            return await product.ToListAsync();
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.ProductId == id);
+
+            return product;
         }
 
     }

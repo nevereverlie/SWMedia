@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
 import { ShopProductComponent } from './shop/shop-product/shop-product.component';
+import { ProductResolver } from './_resolvers/product.resolver';
+import { CategoriesResolver } from './_resolvers/categories.resolver';
+import { CategoryResolver } from './_resolvers/category.resolver';
 
 
 export const routes: Routes = [
@@ -20,9 +23,9 @@ export const routes: Routes = [
       { path: 'main', component: HeaderComponent},
       { path: 'shop', component: ShopComponent,
         children: [
-          { path: 'categories', component: ShopCategoriesComponent},
-          { path: 'categories/:category', component: ShopCategoryComponent},
-          { path: 'categories/:category/:productId', component: ShopProductComponent },
+          { path: 'categories', component: ShopCategoriesComponent, resolve: {categories: CategoriesResolver} },
+          { path: 'categories/:category', component: ShopCategoryComponent, resolve: {category: CategoryResolver} },
+          { path: 'categories/:category/:productId', component: ShopProductComponent, resolve: {product: ProductResolver} },
           { path: '', redirectTo: 'categories', pathMatch: 'full'}
         ]
       },

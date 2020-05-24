@@ -12,14 +12,16 @@ export class ShopCategoryComponent implements OnInit {
   constructor(public route: ActivatedRoute, public shopService: ShopService) {}
 
   ngOnInit() {
-    this.GetProductsFromCategory();
+    this.route.data.subscribe(data => {
+      this.products = data['category'];
+    })
   }
-
+/*
   GetProductsFromCategory() {
     this.shopService.GetProductsFromCategory(this.route.snapshot.paramMap.get('category')).subscribe(response => {
       this.products = response;
       console.log(response);
     });
   }
-
+*/
 }

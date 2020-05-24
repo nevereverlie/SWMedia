@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from 'src/app/_services/shop.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-shop-categories',
@@ -8,15 +9,18 @@ import { ShopService } from 'src/app/_services/shop.service';
 })
 export class ShopCategoriesComponent implements OnInit {
   categories: any;
-  constructor(public shopService: ShopService) { }
+  constructor(private shopService: ShopService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.GetCategories();
+    this.route.data.subscribe(data => {
+      this.categories = data['categories'];
+    })
   }
-
+/*
   GetCategories() {
     this.shopService.GetCategories().subscribe(response => {
       this.categories = response;
     });
   }
+*/
 }
