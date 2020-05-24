@@ -1,0 +1,15 @@
+img {
+  height: 350px;
+}
+
+.transitive {
+  transition: 1s;
+}
+.transitive:hover {
+  transform: scale(1.2, 1.2);
+  transition-timing-function: ease-out;
+}
+
+.card-img-wrapper {
+  overflow: hidden;
+}
