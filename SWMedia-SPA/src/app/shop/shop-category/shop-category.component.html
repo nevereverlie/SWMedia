@@ -2,11 +2,11 @@
   <div *ngFor="let product of products" [routerLink]="[product.productId]" routerLinkActive="router-link-active"  class="col-lg-3 rounded"  >
     <div class="card ml-3 mt-3" style="width: 18rem;">
       <div class="card-img-wrapper">
-        <img class="card-img-top transitive" src="{{product.productImageUrl}}" alt="{{product.description}}">
+        <img class="card-img-top transitive" src="{{product.imageUrl}}" alt="{{product.title}}">
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{product.description}}</h5>
-        <p class="card-text">{{product.price}}</p>
+        <h5 class="card-title">{{product.title}}</h5>
+        <p class="card-text">{{product.description}}</p>
         <a href="#" class="btn btn-primary">Add to cart</a>
       </div>
     </div>

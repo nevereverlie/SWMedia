@@ -18,9 +18,12 @@ export class ShopService {
     return this.http.get(this.baseUrl + 'categories/' + categoryName);
   }
 
-  GetProduct(categoryName: string, productId: number)
-  {
+  GetProduct(categoryName: string, productId: number) {
     return this.http.get(this.baseUrl + 'categories/' + categoryName + '/' + productId);
+  }
+
+  GetAttributes(categoryName: string, productId: number) {
+    return this.http.get(this.baseUrl + 'categories/' + categoryName + '/' + productId + "/attributes");
   }
 
 }

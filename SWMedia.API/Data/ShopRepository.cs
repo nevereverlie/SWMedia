@@ -36,5 +36,15 @@ namespace SWMedia.API.Data
             return product;
         }
 
+        public async Task<List<Attribute>> GetAttributes(int productId)
+        {
+            var attributes = 
+                from p in _context.Products
+                join att in _context.Attributes on p.ProductId equals att.ProductId
+                select att;
+                
+            return await attributes.ToListAsync();
+        }
+
     }
 }

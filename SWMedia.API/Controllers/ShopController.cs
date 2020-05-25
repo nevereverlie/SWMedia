@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SWMedia.API.Data;
@@ -31,6 +32,14 @@ namespace SWMedia.API.Controllers
         {
             var product = await _repo.GetProduct(productId);
             return Ok(product);
+        }
+
+        [HttpGet("categories/{categoryName}/{productId}/attributes")]
+        public async Task<IActionResult> GetAttributes(int productId)
+        {
+            var attributes = await _repo.GetAttributes(productId);
+            
+            return Ok(attributes);
         }
     }
 }

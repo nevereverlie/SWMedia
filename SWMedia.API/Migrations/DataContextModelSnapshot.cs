@@ -16,6 +16,28 @@ namespace SWMedia.API.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.0.0");
 
+            modelBuilder.Entity("SWMedia.API.Models.Attribute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AttributeName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Attributes");
+                });
+
             modelBuilder.Entity("SWMedia.API.Models.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -65,10 +87,10 @@ namespace SWMedia.API.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("REAL");
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("ProductImageUrl")
+                    b.Property<string>("Title")
                         .HasColumnType("TEXT");
 
                     b.HasKey("ProductId");
@@ -114,6 +136,15 @@ namespace SWMedia.API.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("SWMedia.API.Models.Attribute", b =>
+                {
+                    b.HasOne("SWMedia.API.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SWMedia.API.Models.Product", b =>
