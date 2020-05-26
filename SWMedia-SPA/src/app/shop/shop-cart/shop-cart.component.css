@@ -1,0 +1,24 @@
+img {
+  width: 100px;
+}
+
+
+.col, td {
+  text-align: center;
+}
+.col-image {
+  width: 100px;
+}
+.col-title {
+  width: 200px;
+}
+.col-price {
+  width: 100px;
+}
+.col-amount {
+  width: 100px;
+}
+
+.horizontal-wrapper{
+  margin: auto;
+}

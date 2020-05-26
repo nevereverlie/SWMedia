@@ -10,6 +10,10 @@ export class ShopService {
 
   constructor(private http: HttpClient) { }
 
+  AddToOrder(order: any) {
+    return this.http.post(this.baseUrl + 'addToOrder', order);
+  }
+
   GetCategories() {
     return this.http.get(this.baseUrl + 'categories');
   }
@@ -23,7 +27,11 @@ export class ShopService {
   }
 
   GetAttributes(categoryName: string, productId: number) {
-    return this.http.get(this.baseUrl + 'categories/' + categoryName + '/' + productId + "/attributes");
+    return this.http.get(this.baseUrl + 'categories/' + categoryName + '/' + productId + '/attributes');
+  }
+
+  GetOrder(userId: number) {
+    return this.http.get(this.baseUrl + 'cart/' + userId);
   }
 
 }

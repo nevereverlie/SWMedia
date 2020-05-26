@@ -46,5 +46,24 @@ namespace SWMedia.API.Data
             return await attributes.ToListAsync();
         }
 
+        public async Task<List<Order>> GetOrder(int userId)
+        {
+            var order = 
+                from o in _context.Orders
+                join p in _context.Products on o.ProductId equals p.ProductId
+                where o.UserId == userId
+                select o;
+
+            return await order.Include(p => p.Product).ToListAsync();
+        }
+
+        public async Task<Order> AddToOrder(Order order)
+        {
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+
+            return order;
+        }
+
     }
 }

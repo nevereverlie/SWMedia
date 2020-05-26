@@ -5,8 +5,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,7 +19,6 @@ import {
 import { getAuthServiceConfigs } from './socialLoginConfig';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShopComponent } from './shop/shop.component';
 import { FilmsComponent } from './films/films.component';
 import { ChatComponent } from './chat/chat.component';
@@ -34,9 +33,10 @@ import { ShopProductComponent } from './shop/shop-product/shop-product.component
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { ShopService } from './_services/shop.service';
-import { ProductResolver } from './_resolvers/product.resolver';
-import { CategoriesResolver } from './_resolvers/categories.resolver';
-import { CategoryResolver } from './_resolvers/category.resolver';
+import { ProductResolver } from './shop/_resolvers/product.resolver';
+import { CategoriesResolver } from './shop/_resolvers/categories.resolver';
+import { CategoryResolver } from './shop/_resolvers/category.resolver';
+import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -54,7 +54,8 @@ export function tokenGetter() {
       FilmsNavComponent,
       ShopCategoriesComponent,
       ShopCategoryComponent,
-      ShopProductComponent
+      ShopProductComponent,
+      ShopCartComponent
    ],
    imports: [
       BrowserModule,
@@ -71,7 +72,8 @@ export function tokenGetter() {
           whitelistedDomains: ['localhost:5000'],
           blacklistedRoutes: ['localhost:5000/api/auth']
         }
-      })
+      }),
+      NgxNumberSpinnerModule
    ],
    providers: [
       AuthService,

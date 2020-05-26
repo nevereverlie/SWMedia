@@ -9,8 +9,8 @@ using SWMedia.API.Data;
 namespace SWMedia.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200525181251_ProductsAndAttributesSeparated")]
-    partial class ProductsAndAttributesSeparated
+    [Migration("20200526120541_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,6 +75,27 @@ namespace SWMedia.API.Migrations
                     b.HasKey("GoogleUserId");
 
                     b.ToTable("GoogleUsers");
+                });
+
+            modelBuilder.Entity("SWMedia.API.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("SWMedia.API.Models.Product", b =>
@@ -145,6 +166,21 @@ namespace SWMedia.API.Migrations
                     b.HasOne("SWMedia.API.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("SWMedia.API.Models.Order", b =>
+                {
+                    b.HasOne("SWMedia.API.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SWMedia.API.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

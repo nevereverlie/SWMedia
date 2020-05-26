@@ -10,5 +10,7 @@ namespace SWMedia.API.Data
         Task<List<Category>> GetCategories();
         Task<List<Product>> GetProductsFromCategory(string categoryName);
         Task<List<Attribute>> GetAttributes(int productId);
+        Task<List<Order>> GetOrder(int userId);
+        Task<Order> AddToOrder(Order order);
     }
 }

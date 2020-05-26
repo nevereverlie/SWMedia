@@ -1,0 +1,27 @@
+<div class="container mt-3">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th class="col col-image" scope="col">Image</th>
+        <th class="col col-title" scope="col">Title</th>
+        <th class="col col-price" scope="col">Price</th>
+        <th class="col col-amount" scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order">
+        <td><img src="{{item?.product?.imageUrl}}"></td>
+        <td>{{item?.product?.title}}</td>
+        <td>{{item?.product?.price}}</td>
+        <td>
+          <ngx-number-spinner
+            [value]="1"
+            (change)="ChangeTotalSum(item?.product?.productId, $event, item?.product?.price)"
+            [min]="1"
+            [max]="99">
+          </ngx-number-spinner>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SWMedia.API.Data;
+using SWMedia.API.Models;
 
 namespace SWMedia.API.Controllers
 {
@@ -14,6 +15,24 @@ namespace SWMedia.API.Controllers
         {
             _repo = repo;
         }
+
+        [HttpPost("addToOrder")]
+        public async Task<IActionResult> AddToOrder(Order order)
+        {
+            var orderToExtend = new Order
+            {
+                Id = order.Id,
+                ProductId = order.ProductId,
+                Product = order.Product,
+                UserId = order.UserId,
+                Amount = order.Amount
+            };
+
+            var extendedOrder = await _repo.AddToOrder(orderToExtend);
+
+            return Ok(extendedOrder);
+        }
+
         [HttpGet("categories")]
         public async Task<IActionResult> GetCategories()
         {
@@ -40,6 +59,14 @@ namespace SWMedia.API.Controllers
             var attributes = await _repo.GetAttributes(productId);
             
             return Ok(attributes);
+        }
+
+        [HttpGet("cart/{userId}")]
+        public async Task<IActionResult> GetOrder(int userId) 
+        {
+            var order = await _repo.GetOrder(userId);
+
+            return Ok(order);
         }
     }
 }

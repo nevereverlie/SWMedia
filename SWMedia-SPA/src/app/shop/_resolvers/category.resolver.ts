@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../_models/product';
+import { Product } from '../../_models/product';
 import { Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
-import { ShopService } from '../_services/shop.service';
-import { AlertifyService } from '../_services/alertify.service';
+import { ShopService } from '../../_services/shop.service';
+import { AlertifyService } from '../../_services/alertify.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Category } from '../_models/category';
+import { Category } from '../../_models/category';
 
 @Injectable()
 export class CategoryResolver implements Resolve<Category> {

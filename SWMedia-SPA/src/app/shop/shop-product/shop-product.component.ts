@@ -33,16 +33,8 @@ export class ShopProductComponent implements OnInit {
       }
     );
   }
-/*
-  GetProduct(productId: number) {
-    this.shopService.GetProduct(this.route.snapshot.paramMap.get('category'), productId).subscribe(
-      (product: Product) => {
-        this.product = product;
-        console.log(this.product);
-      }, error => {
-        this.alertify.error(error);
-      }
-    );
+
+  AddToCart() {
+    this.shopService.AddToOrder();
   }
-*/
 }
