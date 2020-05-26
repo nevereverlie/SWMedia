@@ -12,33 +12,26 @@ import { tokenGetter } from 'src/app/app.module';
 })
 export class ShopCartComponent implements OnInit {
   order: any;
-  totalSum: number = 0;
+  totalPrice: number = 0;
 
   constructor(private shopService: ShopService, private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit() {
-    console.log(+this.authService.decodedToken.nameid);
-
+    console.log(+this.authService.decodedToken.nameid + ' - userId');
     this.route.data.subscribe(data => {
       this.order = data['order'];
     });
+
+    this.CalculateTotalSum();
   }
-  /*
-  GetOrder() {
-    return this.shopService.GetOrder(+this.authService.decodedToken.nameid).subscribe(
-      response => {
-        this.order = response;
-        this.order.forEach(element => {
-          this.totalSum += element.product.price;
-        });
-        console.log(this.order);
-      }
-    ), error => {
-      console.log(error);
-    }
+
+  private CalculateTotalSum() {
+    this.order.forEach(item => {
+      this.totalPrice += item.product.price;
+    });
   }
-*/
-  ChangeTotalSum(id, amount, price) {
+
+  ChangeTotalPrice(id, amount, price) {
     console.log(amount);
     for (let i = 0; i < this.order.length; i++) {
       if (this.order[i].productId == id) {
@@ -56,11 +49,11 @@ export class ShopCartComponent implements OnInit {
   }
 
   AddToTotal(price) {
-    this.totalSum += price;
-    console.log(this.totalSum);
+    this.totalPrice += price;
+    console.log(this.totalPrice);
   }
   RemoveFromTotal(price) {
-    this.totalSum -= price;
-    console.log(this.totalSum);
+    this.totalPrice -= price;
+    console.log(this.totalPrice);
   }
 }

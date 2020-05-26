@@ -16,7 +16,7 @@
         <td>
           <ngx-number-spinner
             [value]="1"
-            (change)="ChangeTotalSum(item?.product?.productId, $event, item?.product?.price)"
+            (change)="ChangeTotalPrice(item?.product?.productId, $event, item?.product?.price)"
             [min]="1"
             [max]="99">
           </ngx-number-spinner>
