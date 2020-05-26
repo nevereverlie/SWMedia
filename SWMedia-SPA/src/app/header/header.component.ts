@@ -28,12 +28,12 @@ export class HeaderComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.alertify.message('Logged out');
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 
   signinWithGoogle() {
     this.authService.signinWithGoogle();
-    
+
     // .subscribe(response => {
     //   console.log(response);
     // });
