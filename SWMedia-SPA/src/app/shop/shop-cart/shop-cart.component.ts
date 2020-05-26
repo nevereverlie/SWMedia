@@ -19,9 +19,11 @@ export class ShopCartComponent implements OnInit {
   ngOnInit() {
     console.log(+this.authService.decodedToken.nameid);
 
-    this.GetOrder();
+    this.route.data.subscribe(data => {
+      this.order = data['order'];
+    });
   }
-
+  /*
   GetOrder() {
     return this.shopService.GetOrder(+this.authService.decodedToken.nameid).subscribe(
       response => {
@@ -35,7 +37,7 @@ export class ShopCartComponent implements OnInit {
       console.log(error);
     }
   }
-
+*/
   ChangeTotalSum(id, amount, price) {
     console.log(amount);
     for (let i = 0; i < this.order.length; i++) {

@@ -12,6 +12,7 @@ import { ProductResolver } from './shop/_resolvers/product.resolver';
 import { CategoriesResolver } from './shop/_resolvers/categories.resolver';
 import { CategoryResolver } from './shop/_resolvers/category.resolver';
 import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
+import { OrderResolver } from './shop/_resolvers/order.resolver';
 
 
 export const routes: Routes = [
@@ -27,7 +28,7 @@ export const routes: Routes = [
           { path: 'categories', component: ShopCategoriesComponent, resolve: {categories: CategoriesResolver} },
           { path: 'categories/:category', component: ShopCategoryComponent, resolve: {category: CategoryResolver} },
           { path: 'categories/:category/:productId', component: ShopProductComponent, resolve: {product: ProductResolver} },
-          { path: 'cart', component: ShopCartComponent },
+          { path: 'cart', component: ShopCartComponent, resolve: {order: OrderResolver} },
           { path: '', redirectTo: 'categories', pathMatch: 'full'}
         ]
       },

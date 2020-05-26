@@ -37,6 +37,7 @@ import { ProductResolver } from './shop/_resolvers/product.resolver';
 import { CategoriesResolver } from './shop/_resolvers/categories.resolver';
 import { CategoryResolver } from './shop/_resolvers/category.resolver';
 import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
+import { OrderResolver } from './shop/_resolvers/order.resolver';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -83,7 +84,8 @@ export function tokenGetter() {
       ShopService,
       ProductResolver,
       CategoriesResolver,
-      CategoryResolver
+      CategoryResolver,
+      OrderResolver
    ],
    bootstrap: [
       AppComponent
