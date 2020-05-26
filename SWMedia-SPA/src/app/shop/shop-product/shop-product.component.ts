@@ -35,6 +35,6 @@ export class ShopProductComponent implements OnInit {
   }
 
   AddToCart() {
-    this.shopService.AddToOrder();
+    //this.shopService.AddToOrder();
   }
 }

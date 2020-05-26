@@ -41,6 +41,7 @@ namespace SWMedia.API.Data
             var attributes = 
                 from p in _context.Products
                 join att in _context.Attributes on p.ProductId equals att.ProductId
+                where att.ProductId == productId
                 select att;
                 
             return await attributes.ToListAsync();
