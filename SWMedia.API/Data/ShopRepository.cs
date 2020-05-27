@@ -60,11 +60,29 @@ namespace SWMedia.API.Data
 
         public async Task<Order> AddToOrder(Order order)
         {
+            /* почему-то не проходит проверку :/
+            if (await _context.Orders.FirstOrDefaultAsync(o => o.Id == order.Id) != null)
+            {
+                var orderToInc = await _context.Orders.SingleAsync(o => o.Id == order.Id);
+                orderToInc.Amount++;
+                await _context.SaveChangesAsync();
+                return orderToInc;
+            }
+            */
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
 
             return order;
         }
 
+        public async Task<int> RemoveFromOrder(int id)
+        {
+            var removedOrder = await _context.Orders.Where(o => o.Id == id).SingleOrDefaultAsync();
+            if (removedOrder != null)
+                _context.Orders.Remove(entity: removedOrder);
+                await _context.SaveChangesAsync();
+
+            return id;
+        }
     }
 }

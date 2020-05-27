@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth.service';
 import { NgxNumberSpinnerComponent } from 'ngx-number-spinner';
 import { tokenGetter } from 'src/app/app.module';
+import { AlertifyService } from 'src/app/_services/alertify.service';
 
 @Component({
   selector: 'app-shop-cart',
@@ -13,11 +14,13 @@ import { tokenGetter } from 'src/app/app.module';
 export class ShopCartComponent implements OnInit {
   order: any;
   totalPrice: number = 0;
+  userId: number;
 
-  constructor(private shopService: ShopService, private route: ActivatedRoute, private authService: AuthService) { }
+  constructor(private shopService: ShopService, private route: ActivatedRoute, private authService: AuthService, private alertify: AlertifyService) { }
 
   ngOnInit() {
     console.log(+this.authService.decodedToken.nameid + ' - userId');
+    this.userId = +this.authService.decodedToken.nameid;
     this.route.data.subscribe(data => {
       this.order = data['order'];
     });
@@ -55,5 +58,18 @@ export class ShopCartComponent implements OnInit {
   RemoveFromTotal(price) {
     this.totalPrice -= price;
     console.log(this.totalPrice);
+  }
+
+  RemoveFromCart(orderId) {
+    console.log(orderId);
+    this.shopService.RemoveFromOrder(orderId).subscribe(
+      response => {
+        console.log(response);
+        this.alertify.success('Removed from cart');
+      }, error => {
+        this.alertify.error(error);
+        console.log(error);
+      }
+    );
   }
 }

@@ -14,6 +14,10 @@ export class ShopService {
     return this.http.post(this.baseUrl + 'addToOrder', order);
   }
 
+  RemoveFromOrder(orderId: any) {
+    return this.http.post(this.baseUrl + 'cart/' + 'removeFromOrder', orderId);
+  }
+
   GetCategories() {
     return this.http.get(this.baseUrl + 'categories');
   }

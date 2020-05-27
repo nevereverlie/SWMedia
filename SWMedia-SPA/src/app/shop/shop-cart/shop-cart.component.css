@@ -22,3 +22,7 @@ img {
 .horizontal-wrapper{
   margin: auto;
 }
+
+.close {
+  position: absolute;
+}
