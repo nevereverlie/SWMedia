@@ -1,23 +1,20 @@
 using System;
 using System.Collections.Generic;
+using SWMedia.API.Models;
 
-namespace SWMedia.API.Models
+namespace SWMedia.API.Dtos
 {
-    public class User
+    public class UserForListDto
     {
         public int UserId { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
-
-        public DateTime DateOfBirth { get; set; }
+        public int Age { get; set; }
         public string SelfDescription { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public ICollection<Message> MessagesSent { get; set; }
-
-    
+        
     }
 }

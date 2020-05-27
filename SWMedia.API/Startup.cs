@@ -20,6 +20,8 @@ using SWMedia.API.Data;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using SWMedia.API.Helpers;
+using AutoMapper;
+using SWMedia.API.Hubs;
 
 namespace SWMedia.API
 {
@@ -40,8 +42,11 @@ namespace SWMedia.API
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
             services.AddCors();
+            services.AddSignalR();
+            services.AddAutoMapper(typeof(ChatRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<IChatRepository, ChatRepository>();
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -90,6 +95,7 @@ namespace SWMedia.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chatHub");
             });
         }
     }

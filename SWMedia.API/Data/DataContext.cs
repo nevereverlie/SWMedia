@@ -12,5 +12,15 @@ namespace SWMedia.API.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Attribute> Attributes { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Message>()
+                .HasOne(u => u.Sender)
+                .WithMany(m => m.MessagesSent)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }
