@@ -35,10 +35,8 @@ export class ShopCartComponent implements OnInit {
   }
 
   ChangeTotalPrice(id, amount, price) {
-    console.log(amount);
     for (let i = 0; i < this.order.length; i++) {
       if (this.order[i].productId == id) {
-        console.log(this.order[i].amount);
         if (amount >= this.order[i].amount) {
           this.AddToTotal(price);
           this.order[i].amount++;
@@ -60,7 +58,7 @@ export class ShopCartComponent implements OnInit {
     console.log(this.totalPrice);
   }
 
-  RemoveFromCart(orderId) {
+  RemoveFromCart(orderId, price, productId) {
     console.log(orderId);
     this.shopService.RemoveFromOrder(orderId).subscribe(
       response => {
@@ -68,6 +66,8 @@ export class ShopCartComponent implements OnInit {
 
         var rowToRemove = document.getElementById('row-' + orderId);
         rowToRemove.remove();
+
+        this.ChangeTotalPrice(productId, 0, price);
       }, error => {
         this.alertify.error(error);
         console.log(error);
