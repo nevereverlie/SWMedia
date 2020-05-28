@@ -64,12 +64,16 @@ export class ShopCartComponent implements OnInit {
     console.log(orderId);
     this.shopService.RemoveFromOrder(orderId).subscribe(
       response => {
-        console.log(response);
         this.alertify.success('Removed from cart');
+
+        var rowToRemove = document.getElementById('row-' + orderId);
+        rowToRemove.remove();
       }, error => {
         this.alertify.error(error);
         console.log(error);
       }
     );
   }
+
+
 }

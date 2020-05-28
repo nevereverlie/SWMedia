@@ -9,14 +9,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of order">
+      <tr *ngFor="let item of order" id="row-{{item.id}}">
         <td class="align-middle">
           <button id="btnRemoveFromCart" type="button" class="close text-danger" aria-label="Close" (click)="RemoveFromCart(item.id)">
             <span aria-hidden="true">&times;</span>
           </button>
           <img src="{{ item.product.imageUrl }}" />
         </td>
-
         <td class="align-middle">{{ item.product.title }}</td>
         <td class="align-middle">{{ item.product.price }}</td>
         <td class="align-middle">

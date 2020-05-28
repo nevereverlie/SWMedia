@@ -14,8 +14,8 @@ export class ShopService {
     return this.http.post(this.baseUrl + 'addToOrder', order);
   }
 
-  RemoveFromOrder(orderId: any) {
-    return this.http.post(this.baseUrl + 'cart/' + 'removeFromOrder', orderId);
+  RemoveFromOrder(orderId: number) {
+    return this.http.post(this.baseUrl + 'removeFromOrder/' + orderId, orderId);
   }
 
   GetCategories() {
