@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace SWMedia.API.Hubs
 {
-    public class ChatHub : Hub 
+    public class ChatHub : Hub
     {
-        public async Task SendMessage(string message)
+        public async Task SendToAll(string name, string message)
         {
-            await Clients.All.SendAsync("MessageReceived", message);
+            await Clients.All.SendAsync("sendToAll", name, message);
         }
     }
 }

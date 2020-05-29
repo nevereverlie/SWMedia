@@ -3391,11 +3391,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj",
+      "projectUniqueName": "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj",
       "projectName": "SWMedia.API",
-      "projectPath": "c:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj",
+      "projectPath": "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj",
       "packagesPath": "C:\\Users\\Danilda\\.nuget\\packages\\",
-      "outputPath": "c:\\SWMedia-dev\\SWMedia.API\\obj\\",
+      "outputPath": "C:\\SWMedia-dev\\swmedia.api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Danilda\\AppData\\Roaming\\NuGet\\NuGet.Config"

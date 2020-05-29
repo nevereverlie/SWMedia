@@ -166,7 +166,6 @@ C:\SWMedia-dev\swmedia.api\obj\Debug\netcoreapp3.1\SWMedia.API.pdb
 C:\SWMedia-dev\swmedia.api\obj\Debug\netcoreapp3.1\SWMedia.API.genruntimeconfig.cache
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\System.Net.WebSockets.WebSocketProtocol.dll
 C:\SWMedia-dev\swmedia.api\obj\Debug\netcoreapp3.1\SWMedia.API.MvcApplicationPartsAssemblyInfo.cs
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.NodeServices.dll
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.SpaServices.dll
@@ -186,3 +185,4 @@ C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\SWMedia-dev\swmedia.api\bin\Debug\netcoreapp3.1\System.Net.WebSockets.WebSocketProtocol.dll

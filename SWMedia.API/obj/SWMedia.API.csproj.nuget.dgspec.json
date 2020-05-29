@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj": {}
+    "C:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj": {}
   },
   "projects": {
-    "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj": {
+    "C:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj",
+        "projectUniqueName": "C:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj",
         "projectName": "SWMedia.API",
-        "projectPath": "C:\\SWMedia-dev\\swmedia.api\\SWMedia.API.csproj",
+        "projectPath": "C:\\SWMedia-dev\\SWMedia.API\\SWMedia.API.csproj",
         "packagesPath": "C:\\Users\\Danilda\\.nuget\\packages\\",
-        "outputPath": "C:\\SWMedia-dev\\swmedia.api\\obj\\",
+        "outputPath": "C:\\SWMedia-dev\\SWMedia.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Danilda\\AppData\\Roaming\\NuGet\\NuGet.Config"
