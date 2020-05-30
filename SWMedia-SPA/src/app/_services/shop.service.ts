@@ -38,4 +38,29 @@ export class ShopService {
     return this.http.get(this.baseUrl + 'cart/' + userId);
   }
 
+  loadAddreses() {
+    const model = {
+      apiKey: 'f956a97c3fd659cf311638241d823258',
+      modelName: 'Address',
+      calledMethod: 'searchSettlements',
+      methodProperties: {
+        CityName: 'київ',
+        Limit: 5
+      }
+    };
+    return this.http.post('http://api.novaposhta.ua/v2.0/json/Address/searchSettlements', model);
+  }
+
+  loadCities() {
+    const model = {
+      modelName: 'Address',
+      calledMethod: 'getCities',
+      methodProperties: {
+      //Ref: 'ebc0eda9-93ec-11e3-b441-0050568002cf'
+      },
+      apiKey: 'f956a97c3fd659cf311638241d823258'
+    };
+
+    return this.http.post('http://api.novaposhta.ua/v2.0/json/Address/getCities', model);
+  }
 }

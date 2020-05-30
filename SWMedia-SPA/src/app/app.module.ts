@@ -8,6 +8,8 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
 
+import {DropdownModule} from 'primeng/dropdown';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -38,6 +40,7 @@ import { CategoriesResolver } from './shop/_resolvers/categories.resolver';
 import { CategoryResolver } from './shop/_resolvers/category.resolver';
 import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
 import { OrderResolver } from './shop/_resolvers/order.resolver';
+import { ShopCheckoutComponent } from './shop/shop-checkout/shop-checkout.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -56,10 +59,12 @@ export function tokenGetter() {
       ShopCategoriesComponent,
       ShopCategoryComponent,
       ShopProductComponent,
-      ShopCartComponent
+      ShopCartComponent,
+      ShopCheckoutComponent
    ],
    imports: [
       BrowserModule,
+      DropdownModule,
       HttpClientModule,
       AppRoutingModule,
       SocialLoginModule.initialize(getAuthServiceConfigs()),
