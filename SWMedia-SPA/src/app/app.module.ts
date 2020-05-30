@@ -7,8 +7,10 @@ import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxNumberSpinnerModule } from 'ngx-number-spinner';
-
 import {DropdownModule} from 'primeng/dropdown';
+import {AccordionModule} from 'primeng/accordion';
+import {FieldsetModule} from 'primeng/fieldset';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -79,7 +81,10 @@ export function tokenGetter() {
           blacklistedRoutes: ['localhost:5000/api/auth']
         }
       }),
-      NgxNumberSpinnerModule
+      NgxNumberSpinnerModule,
+      AccordionModule,
+      FieldsetModule,
+      ScrollPanelModule
    ],
    providers: [
       AuthService,

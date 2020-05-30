@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import * as signalR from '@aspnet/signalr'
+import { AuthService } from '../_services/auth.service';
+import { UsersService } from '../_services/users.service';
 
 @Component({
   selector: "app-chat",
@@ -8,18 +10,22 @@ import * as signalR from '@aspnet/signalr'
 })
 export class ChatComponent {
   _hubConnection: any;
-  nick = "";
+  nick: string;
   message = "";
   messages: string[] = [];
+
+  constructor(private usersService: UsersService, private authService: AuthService) {}
 
   public sendMessage(): void {
     this._hubConnection
       .invoke('sendToAll', this.nick, this.message)
       .catch(err => console.error(err));
+
   }
 
   ngOnInit() {
-    this.nick = window.prompt("Your name:", "John");
+    console.log(this.authService.decodedToken);
+    this.nick = this.authService.decodedToken.unique_name;
 
     this._hubConnection = new signalR.HubConnectionBuilder()
                           .withUrl("http://localhost:5000/signalr")

@@ -39,7 +39,11 @@ namespace SWMedia.API.Controllers
             {
                 Username = userForRegisterDto.Username,
                 Email = userForRegisterDto.Email,
-                Phone = userForRegisterDto.Phone
+                Phone = userForRegisterDto.Phone,
+                DateOfBirth = userForRegisterDto.DateOfBirth,
+                Country = userForRegisterDto.Country,
+                SelfDescription = userForRegisterDto.SelfDescription,
+                City = userForRegisterDto.City
             };
             
             var createdUser = await _repo.RegisterUser(userToCreate, userForRegisterDto.Password);
@@ -128,6 +132,41 @@ namespace SWMedia.API.Controllers
             return Ok(new {
                 token = tokenHandler.WriteToken(token)
             });
+        }
+
+        [HttpPost("updateUser")]
+        public async Task<IActionResult> UpdateUser(UserForUpdateDto userForUpdate)
+        {
+            userForUpdate.Username = userForUpdate.Username.ToLower();
+            
+            if(!await _repo.UserExists(userForUpdate.Username))
+            {
+                return BadRequest("User does not exist.");
+            }
+            var userToUpdate = new User
+            {
+                Username = userForUpdate.Username,
+                Email = userForUpdate.Email,
+                Phone = userForUpdate.Phone,
+                DateOfBirth = userForUpdate.DateOfBirth,
+                Country = userForUpdate.Country,
+                SelfDescription = userForUpdate.SelfDescription,
+                City = userForUpdate.City
+            };
+            
+            var updatedUser = await _repo.UpdateUser(userToUpdate, userForUpdate.Password);
+
+            return Ok(updatedUser);
+        }
+
+        [HttpGet("getUserProfile")]
+        public async Task<IActionResult> GetUserProfile(User user)
+        {
+            user.Username = user.Username.ToLower();
+
+            var userProfile = await _repo.GetUserProfile(user);
+
+            return Ok(userProfile);
         }
     }
 }
