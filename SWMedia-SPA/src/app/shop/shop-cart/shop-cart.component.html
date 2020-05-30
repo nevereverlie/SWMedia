@@ -22,11 +22,7 @@
           <ngx-number-spinner
             [value]="1"
             (change)="
-              ChangeTotalPrice(
-                item.product.productId,
-                $event,
-                item.product.price
-              )
+              CalculateTotalSum();
             "
             [min]="1"
             [max]="99"
