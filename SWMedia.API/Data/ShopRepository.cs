@@ -75,14 +75,14 @@ namespace SWMedia.API.Data
             return order;
         }
 
-        public async Task<Order> RemoveFromOrder(int id)
+        public async Task<int> RemoveFromOrder(int id)
         {
-            var orderToRemove = await _context.Orders.Where(o => o.Id == id).SingleOrDefaultAsync();
-            if (orderToRemove != null)
-                _context.Orders.Remove(entity: orderToRemove);
+            var removedOrder = await _context.Orders.Where(o => o.Id == id).SingleOrDefaultAsync();
+            if (removedOrder != null)
+                _context.Orders.Remove(entity: removedOrder);
                 await _context.SaveChangesAsync();
 
-            return orderToRemove;
+            return id;
         }
     }
 }

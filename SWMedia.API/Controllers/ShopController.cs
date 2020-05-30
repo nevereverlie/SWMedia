@@ -33,14 +33,12 @@ namespace SWMedia.API.Controllers
             return Ok(extendedOrder);
         }
 
-        [HttpPost("removeFromOrder")]
-        public async Task<IActionResult> RemoveFromOrder([FromBody]int orderId)
+        [HttpPost("removeFromOrder/{orderId}")]
+        public async Task<IActionResult> RemoveFromOrder(int orderId)
         {
             var removedOrder = await _repo.RemoveFromOrder(orderId);
 
-            var refreshedOrder = await _repo.GetOrder(removedOrder.UserId);
-
-            return Ok(refreshedOrder);
+            return Ok(removedOrder);
         }
 
         [HttpGet("categories")]

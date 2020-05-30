@@ -13,6 +13,6 @@ namespace SWMedia.API.Data
         Task<List<Order>> GetOrder(int userId);
         Task<Order> AddToOrder(Order order);
 
-        Task<Order> RemoveFromOrder(int id);
+        Task<int> RemoveFromOrder(int id);
     }
 }

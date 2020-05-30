@@ -28,12 +28,10 @@ export class ShopCartComponent implements OnInit {
     this.CalculateTotalSum();
   }
 
-  CalculateTotalSum() {
-    this.totalPrice = 0;
+  private CalculateTotalSum() {
     this.order.forEach(item => {
       this.totalPrice += item.product.price;
     });
-    console.log(this.totalPrice);
   }
 
   ChangeTotalPrice(id, amount, price) {
@@ -66,14 +64,10 @@ export class ShopCartComponent implements OnInit {
       response => {
         this.alertify.success('Removed from cart');
 
-        console.log(response);
-        
-        this.order = response;
-        //var rowToRemove = document.getElementById('row-' + orderId);
-        //rowToRemove.remove();
+        var rowToRemove = document.getElementById('row-' + orderId);
+        rowToRemove.remove();
 
-        // this.ChangeTotalPrice(productId, 0, price);
-        this.CalculateTotalSum();
+        this.ChangeTotalPrice(productId, 0, price);
       }, error => {
         this.alertify.error(error);
         console.log(error);
