@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
 
 
     this.alertify.error('Access denied. Sign in please');
-    this.router.navigate(['/main']);
+    this.router.navigate(['']);
     return false;
   }
 }
