@@ -18,6 +18,7 @@ export class ShopCategoriesComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.categories = data['categories'];
     });
+    console.log(this.categories);
     this.items = [
       {label:'Categories'}
     ];

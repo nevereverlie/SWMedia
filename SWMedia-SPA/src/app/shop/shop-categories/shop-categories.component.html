@@ -1,14 +1,13 @@
-<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
 <div class="container m-0 mw-100">
   <div class="row" style="align-content: space-between;">
     <div
-      id="categoryCard"
+      id="categoryCard-active-class"
       *ngFor="let category of categories"
       class="col-3 ml-5 mt-5 transition"
       [ngStyle]="{ 'background-image': 'url(' + category.categoryUrl + ')' }"
       [routerLink]="[category.categoryName]"
       routerLinkActive="router-link-active"
-      style="max-width: 300px;"
+      style="max-width: 300px; opacity: 100% !important;"
     >
       <a class="categoryName" style="color: black; overflow: hidden; margin-top: 200px;">{{ category.categoryName }}</a>
     </div>

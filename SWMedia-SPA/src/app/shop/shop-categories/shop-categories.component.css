@@ -1,4 +1,4 @@
-#categoryCard {
+#categoryCard-active-class {
   height: 300px;
   color: white;
   background-color: rgb(60, 60, 60);
@@ -6,13 +6,11 @@
   border-radius: 1rem;
   background-size: cover;
   cursor: pointer;
-  opacity: 50%;
   padding-top: 300px;
   font-size: x-large;
   text-align: center;
 }
 #categoryCard:hover {
-  opacity: 100%;
   transform: scale(1.1, 1.1);
   transition-duration: 500ms;
   transition-timing-function: ease-out;

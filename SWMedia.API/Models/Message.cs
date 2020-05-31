@@ -7,7 +7,7 @@ namespace SWMedia.API.Models
     {
         public int Id { get; set; }
         public int SenderId { get; set; }
-        public User Sender { get; set; }
+        public virtual User Sender { get; set; }
         [Required]
         public string Username { get; set; }
         [Required]

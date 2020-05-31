@@ -37,14 +37,14 @@ namespace SWMedia.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(m => m.MessagesSent).FirstOrDefaultAsync(u => u.UserId == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
 
             return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(m => m.MessagesSent).ToListAsync();
+            var users = await _context.Users.ToListAsync();
 
             return users;
         }

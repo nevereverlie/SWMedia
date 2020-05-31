@@ -38,11 +38,11 @@ export class ChatComponent {
     this.nick = this.authService.decodedToken.unique_name;
 
     this._hubConnection = new signalR.HubConnectionBuilder()
-                          .withUrl("http://localhost:5000/signalr")
+                          .withUrl("https://swmedia.azurewebsites.net/signalr")
                           .build();
 
     this._hubConnection
-      .start()
+      .start({withCredentials: false})
       .then(() => console.log("Connection started!"))
       .catch((err) => console.log("Error while establishing connection :(" + err)
       );

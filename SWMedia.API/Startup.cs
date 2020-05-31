@@ -32,12 +32,30 @@ namespace SWMedia.API
             Configuration = configuration;
         }
 
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            services.AddDbContext<DataContext>(x => {
+                x.UseLazyLoadingProxies();
+                x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            ConfigureServices(services);
+        }
+
+        public void ConfigureProductionServices(IServiceCollection services)
+        {
+            services.AddDbContext<DataContext>(x => {
+                x.UseLazyLoadingProxies();
+                x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
+            ConfigureServices(services);
+        }
+
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddSignalR();
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
             {
@@ -45,7 +63,7 @@ namespace SWMedia.API
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins("http://localhost:4200");
+                    .WithOrigins("https://swmedia.azurewebsites.net");
             }));
             services.AddControllers().AddNewtonsoftJson(opt => {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -78,7 +96,7 @@ namespace SWMedia.API
             }
             else 
             {
-                app.UseExceptionHandler(builder => {
+               app.UseExceptionHandler(builder => {
                     builder.Run(async context => {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
@@ -90,10 +108,11 @@ namespace SWMedia.API
                         }
                     });
                 });
+                app.UseHsts();
             }
             app.UseCors("CorsPolicy");
 
-
+            app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -102,10 +121,14 @@ namespace SWMedia.API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<ChatHub>("/signalr");
+                endpoints.MapFallbackToController("Index", "Fallback");
             });
         }
     }

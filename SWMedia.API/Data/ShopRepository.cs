@@ -25,7 +25,6 @@ namespace SWMedia.API.Data
                 join c in _context.Categories on p.CategoryId equals c.CategoryId
                 where c.CategoryName == categoryName
                 select p;
-            //return await products.Include(p => p.Category).ToListAsync();
             return await products.ToListAsync();
         }
 
@@ -55,7 +54,7 @@ namespace SWMedia.API.Data
                 where o.UserId == userId
                 select o;
 
-            return await order.Include(p => p.Product).ToListAsync();
+            return await order.ToListAsync();
         }
 
         public async Task<Order> AddToOrder(Order order)
