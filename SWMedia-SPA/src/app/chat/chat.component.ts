@@ -2,6 +2,8 @@ import { Component } from "@angular/core";
 import * as signalR from '@aspnet/signalr'
 import { AuthService } from '../_services/auth.service';
 import { UsersService } from '../_services/users.service';
+import { ChatService } from '../_services/chat.service';
+import { Message } from '../_models/message';
 
 @Component({
   selector: "app-chat",
@@ -13,8 +15,9 @@ export class ChatComponent {
   nick: string;
   message = "";
   messages: string[] = [];
+  isCurrentUser: false;
 
-  constructor(private usersService: UsersService, private authService: AuthService) {}
+  constructor(private chatService: ChatService, private authService: AuthService) {}
 
   public sendMessage(): void {
     this._hubConnection
@@ -25,6 +28,13 @@ export class ChatComponent {
 
   ngOnInit() {
     console.log(this.authService.decodedToken);
+
+    this.chatService.GetMessages().subscribe(response => {
+      for (var message in response) {
+        this.messages.push(response[message].text);
+      }
+    });
+
     this.nick = this.authService.decodedToken.unique_name;
 
     this._hubConnection = new signalR.HubConnectionBuilder()
@@ -37,10 +47,8 @@ export class ChatComponent {
       .catch((err) => console.log("Error while establishing connection :(" + err)
       );
 
-    this._hubConnection.on(
-      "sendToAll",
-      (nick: string, receivedMessage: string) => {
-        const text = `${nick}: ${receivedMessage}`;
+    this._hubConnection.on("sendToAll", (nick: string, receivedMessage: string) => {
+        const text = `${receivedMessage}`;
         this.messages.push(text);
       }
     );

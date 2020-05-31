@@ -1,18 +1,42 @@
-<!-- Image and text -->
-
-
-
-<div class="container w-100 d-inline-block mw-100">
-  <nav class="navbar navbar-dark bg-dark w-100 p-0">
-    <a class="navbar-brand" href="#">
-      <img src="https://res.cloudinary.com/nevereverlie/image/upload/v1590328045/SWMedia_Shop/SVGs/sw_j2jn36.svg" width="150px" height="150px" class="d-inline-block align-center" alt="">
+<div class="container d-inline-block mw-100">
+  <nav class="navbar navbar-dark bg-dark p-0">
+    <a class="navbar-brand" [routerLink]="['/main']" routerLinkActive="router-link-active">
+      <img src="https://res.cloudinary.com/nevereverlie/image/upload/v1590328045/SWMedia_Shop/SVGs/sw_j2jn36.svg" width="150px" height="150px" class="d-inline-block align-center" style="margin-left: 50px;" alt="Homepage">
       Star Wars Media
     </a>
-    <a>Contacts</a>
-    <a>Delivery</a>
-    <a>Peyment</a>
-    <a>Guarantees</a>
-    <input type="search">
-    <img class="mr-5" [routerLink]="['./cart']" routerLinkActive="router-link-active"  src="https://res.cloudinary.com/nevereverlie/image/upload/v1590328045/SWMedia_Shop/SVGs/cart_g_pzqk5l.svg" style="height:80px; margin-top: 10px; display: inline-block;">
+    <form class="form-inline">
+      <ul class="navbar-nav" style="flex-direction: row;">
+        <li class="nav-item">
+          <a class="nav-link" (click)="showContacts()">Contacts</a>
+          <p-dialog header="CONTACTS" [(visible)]="displayContacts" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            Contact us by phone:
+            <br><br>
+            +38 (068) 053 58 42<br>
+            +38 (099) 053 59 42
+            <br><br>
+            Working hours: 8:00 - 20:00
+            <hr>
+            Our E-mail:<br>
+            starwars.media@theforce.com
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" (click)="displayContacts=false" label="Yes"></button>
+            </p-footer>
+        </p-dialog>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Delivery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Payment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Guaranties</a>
+        </li>
+      </ul>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+    <img class="mr-5" [routerLink]="['./cart']" routerLinkActive="router-link-active"  src="https://res.cloudinary.com/nevereverlie/image/upload/v1590328045/SWMedia_Shop/SVGs/cart_g_pzqk5l.svg" style="height:80px; margin-top: 10px; display: inline-block; cursor: pointer;">
   </nav>
 </div>

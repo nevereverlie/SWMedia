@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,15 @@ namespace SWMedia.API.Data
         {
             _context = context;
         }
-        public Task<Message> GetMessage(int id)
+        public Task<Message> GetMessage(int messageId)
         {
-            throw new System.NotImplementedException();
+            var messageFromRepo = _context.Messages.FirstOrDefaultAsync(m => m.Id == messageId);
+
+            if (messageFromRepo == null)
+                return null;
+
+            return messageFromRepo;
+
         }
 
         public async Task<List<Message>> GetMessages()

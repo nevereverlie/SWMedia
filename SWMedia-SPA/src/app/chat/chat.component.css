@@ -1,4 +1,4 @@
-.outbox {
+.outbox-right {
   height: 300px;
   max-height: 300px;
   overflow-y: scroll;
@@ -6,6 +6,14 @@
   padding: 15px;
   float: right;
   text-align: right;
+}
+.outbox-left {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+  padding: 15px;
+  text-align: left;
 }
 
 .content {

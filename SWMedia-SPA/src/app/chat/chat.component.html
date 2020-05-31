@@ -6,8 +6,13 @@
         <button class="btn btn-outline-warning my-2 my-sm-0">Options</button>
       </form>
     </nav>
-    <div class="outbox">
-      <div class="message"  *ngFor="let message of messages">
+    <div class="outbox-right" *ngIf="isCurrentUser">
+      <div class="message" *ngFor="let message of messages">
+        <label id="messageBox" for="message">{{ message }}</label>
+      </div>
+    </div>
+    <div class="outbox-left" *ngIf="!isCurrentUser">
+      <div class="message" *ngFor="let message of messages">
         <label id="messageBox" for="message">{{ message }}</label>
       </div>
     </div>

@@ -11,6 +11,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {AccordionModule} from 'primeng/accordion';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ScrollPanelModule} from 'primeng/scrollpanel';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -84,7 +87,10 @@ export function tokenGetter() {
       NgxNumberSpinnerModule,
       AccordionModule,
       FieldsetModule,
-      ScrollPanelModule
+      ScrollPanelModule,
+      DialogModule,
+      ButtonModule,
+      BreadcrumbModule
    ],
    providers: [
       AuthService,

@@ -1,15 +1,16 @@
+<p-breadcrumb [model]="items" [home]="home"></p-breadcrumb>
 <div class="container m-0 mw-100">
   <div class="row" style="align-content: space-between;">
     <div
       id="categoryCard"
       *ngFor="let category of categories"
-      class="col-lg-3 ml-5 mt-5 transition"
+      class="col-3 ml-5 mt-5 transition"
       [ngStyle]="{ 'background-image': 'url(' + category.categoryUrl + ')' }"
       [routerLink]="[category.categoryName]"
       routerLinkActive="router-link-active"
-      style=""
+      style="max-width: 300px;"
     >
-      <a style="color: white;">{{ category.categoryName }}</a>
+      <a class="categoryName" style="color: black; overflow: hidden; margin-top: 200px;">{{ category.categoryName }}</a>
     </div>
   </div>
 </div>

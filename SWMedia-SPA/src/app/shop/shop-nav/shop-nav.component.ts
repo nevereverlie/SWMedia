@@ -9,7 +9,12 @@ export class ShopNavComponent implements OnInit {
 
   constructor() { }
 
+  displayContacts: boolean;
+
   ngOnInit() {
   }
 
+  showContacts() {
+    this.displayContacts = true;
+  }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ShopService } from 'src/app/_services/shop.service';
 import { AuthService } from 'src/app/_services/auth.service';
 import { AlertifyService } from 'src/app/_services/alertify.service';
+import { MenuItem } from 'primeng/api/menuitem';
 
 @Component({
   selector: 'app-shop-category',
@@ -14,6 +15,8 @@ export class ShopCategoryComponent implements OnInit {
   userId: number;
   attributes: any;
   order: any;
+  items: MenuItem[];
+  home: MenuItem;
 
   constructor(public route: ActivatedRoute, public shopService: ShopService, private authService: AuthService, private alertify: AlertifyService) {}
 
@@ -22,8 +25,13 @@ export class ShopCategoryComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.products = data['category'];
+      console.log(this.products); //добавить в include category, чтоб вывести сюда ее название
     });
 
+    this.items = [
+      {label:'Categories'}
+    ];
+    this.home = {icon: 'pi pi-home', routerLink: '../../main/'};
 
   }
 

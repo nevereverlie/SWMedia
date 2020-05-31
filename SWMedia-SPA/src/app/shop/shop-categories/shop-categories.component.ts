@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from 'src/app/_services/shop.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-shop-categories',
@@ -9,18 +10,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ShopCategoriesComponent implements OnInit {
   categories: any;
-  constructor(private shopService: ShopService, private route: ActivatedRoute) { }
+  home: MenuItem;
+  items: MenuItem[];
+  constructor(private shopService: ShopService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.categories = data['categories'];
-    })
-  }
-/*
-  GetCategories() {
-    this.shopService.GetCategories().subscribe(response => {
-      this.categories = response;
     });
+    this.items = [
+      {label:'Categories'}
+    ];
+    this.home = {icon: 'pi pi-home', routerLink: '../../main/'};
   }
-*/
 }
