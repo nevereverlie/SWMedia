@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { AlertifyService } from '../_services/alertify.service';
 import { Router } from '@angular/router';
+import { ModalModule, BsModalRef, BsModalService} from 'ngx-bootstrap/modal'
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +13,16 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   model: any = {};
   registerMode = false;
+  bsModalRef: BsModalRef;
 
-  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router) { }
+  constructor(public authService: AuthService, private alertify: AlertifyService, private router: Router, private modalService: BsModalService) { }
 
   ngOnInit() {
+  }
+
+  openModalWithComponent() {
+    this.bsModalRef = this.modalService.show(RegisterComponent);
+    this.bsModalRef.content.closeBtnName = 'Close';
   }
 
   login() {

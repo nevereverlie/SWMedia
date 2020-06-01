@@ -29,6 +29,7 @@
     "bootstrap-input-spinner": "^1.13.5",
     "bootswatch": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "mdbootstrap": "^4.19.0",
     "ngx-bootstrap": "^5.6.1",
     "ngx-number-spinner": "^2.0.0",
     "primeicons": "^4.0.0-rc.2",

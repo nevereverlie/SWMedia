@@ -13,3 +13,7 @@ img {
 .card-img-wrapper {
   overflow: hidden;
 }
+
+#price {
+  float: right;
+}

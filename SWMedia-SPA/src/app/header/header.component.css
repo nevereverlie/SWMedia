@@ -2,6 +2,38 @@
   cursor: pointer;
 }
 
+.nav-link {
+  font-family: 'Raleway', sans-serif;
+}
+
 .container {
   display: contents;
+}
+
+.col, .column{
+  background-color: gray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 900px;
+  max-width: 500px;
+  text-align: center;
+  border-width: 5px !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.column-content {
+  margin-top: 200px;
+}
+.title, .description {
+  color: whitesmoke;
+}
+
+.ref {
+  margin-top: 150px;
+}
+
+
+
+footer {
+  font-family: 'Raleway', sans-serif;
 }

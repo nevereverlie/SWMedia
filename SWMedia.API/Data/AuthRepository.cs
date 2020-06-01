@@ -106,7 +106,7 @@ namespace SWMedia.API.Data
 
             if (updatedUser == null)
                 return null;
-
+            /*
             if (!VerifyPasswordHash(password, updatedUser.PasswordHash, updatedUser.PasswordSalt))
             {
                 byte[] passwordHash, passwordSalt;
@@ -116,12 +116,14 @@ namespace SWMedia.API.Data
                 updatedUser.PasswordHash = passwordHash;
                 updatedUser.PasswordSalt = passwordSalt;
             }
-
+            */
             updatedUser.Email = user.Email;
             updatedUser.Phone = user.Phone;
             updatedUser.SelfDescription = user.SelfDescription;
             updatedUser.Country = user.Country;
             updatedUser.City = user.City;
+            
+            await _context.SaveChangesAsync();
 
             return updatedUser;
         }

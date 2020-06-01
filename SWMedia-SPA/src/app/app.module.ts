@@ -14,6 +14,7 @@ import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {ModalModule} from 'ngx-bootstrap/modal';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -90,7 +91,8 @@ export function tokenGetter() {
       ScrollPanelModule,
       DialogModule,
       ButtonModule,
-      BreadcrumbModule
+      BreadcrumbModule,
+      ModalModule.forRoot()
    ],
    providers: [
       AuthService,

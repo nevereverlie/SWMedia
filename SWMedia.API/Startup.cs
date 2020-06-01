@@ -63,7 +63,7 @@ namespace SWMedia.API
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins("https://swmedia.azurewebsites.net");
+                    .WithOrigins("https://swmedia.azurewebsites.net", "http://localhost:4200");
             }));
             services.AddControllers().AddNewtonsoftJson(opt => {
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

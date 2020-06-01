@@ -1,3 +1,4 @@
+<!--NAVBAR-->
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/home']">Star Wars Media</a>
@@ -11,11 +12,23 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/chat']">Chat</a>
       </li>
+      <li
+        *ngIf="!this.authService.loggedIn()"
+        class="nav-item"
+        routerLinkActive="active"
+        style="cursor: pointer;"
+      >
+        <a class="nav-link" (click)="registerToggle(); openModalWithComponent()">Registration</a>
+      </li>
     </ul>
 
-    <div *ngIf="this.authService.loggedIn();" class="dropdown" dropdown>
+    <div *ngIf="this.authService.loggedIn()" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome, {{ authService.decodedToken?.given_name || authService.decodedToken?.unique_name  | titlecase }}
+        Welcome,
+        {{
+          authService.decodedToken?.given_name ||
+            authService.decodedToken?.unique_name | titlecase
+        }}
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
@@ -28,7 +41,7 @@
     </div>
 
     <form
-      *ngIf="!this.authService.loggedIn();"
+      *ngIf="!this.authService.loggedIn()"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0 mw-100"
       (ngSubmit)="login()"
@@ -61,28 +74,68 @@
         (click)="signinWithGoogle()"
         type="button"
       >
-        Google
+        <i class="fa fa-google" style="font-size: 2em;"></i>
       </button>
     </form>
   </div>
 </nav>
-
-
-<div class="container mt-5">
-  <div *ngIf="!registerMode" style="text-align: center">
-    <h1>Star Wars Media</h1>
-    <p class="lead">There will be 3 columns for other pages</p>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
-    </div>
-  </div>
-
-  <div *ngIf="registerMode" class="container">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <app-register (cancelRegistration)="cancelRegistrationMode($event)"></app-register>
-      </div>
+<!--REGISTRATION FORM-->
+<div *ngIf="registerMode" style="margin: auto; margin-top: 3em;">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <app-register
+        (cancelRegistration)="cancelRegistrationMode($event)"
+      ></app-register>
     </div>
   </div>
 </div>
+<!--CONTENT-->
+<div class="row" style="margin: 0; display: flex; justify-content: space-between; max-width: 100%;">
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/v1591039826/SWMedia_Main/1_vedw5b.png)'}">
+    <div class="column-content">
+      <h3 class="title mb-5">
+        MARKETPLACE
+      </h3>
+      <h4 class="description">
+        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+        ipsum
+      </h4>
+    </div>
+    <button class="btn btn-dark ref" [routerLink]="['/shop/categories']" routerLinkActive="router-link-active" >MARKETPLACE</button>
+  </div>
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/v1591039826/SWMedia_Main/2_hahemk.png)'}">
+    <div class="column-content">
+      <h3 class="title mb-5">
+        MARKETPLACE
+      </h3>
+      <h4 class="description">
+        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+        ipsum
+      </h4>
+    </div>
+    <button class="btn btn-dark ref" [routerLink]="['/films']" routerLinkActive="router-link-active" >FILMS</button>
+  </div>
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/v1591039826/SWMedia_Main/3_znw6ng.png)'}">
+    <div class="column-content">
+      <h3 class="title mb-5">
+        MARKETPLACE
+      </h3>
+      <h4 class="description">
+        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
+        ipsum
+      </h4>
+    </div>
+    <button class="btn btn-dark ref" [routerLink]="['/chat']" routerLinkActive="router-link-active" >CHAT</button>
+  </div>
+</div>
+<!--FOOTER-->
+<footer>
+  <footer class="page-footer font-small blue">
 
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="color: honeydew;  background-color: #1a1a1a;">© 2020 Copyright:
+      <a href="https://swmedia.azurewebsites.net"> SWMedia.net</a>
+    </div>
+
+  </footer>
+</footer>

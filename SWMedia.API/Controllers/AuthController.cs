@@ -159,7 +159,7 @@ namespace SWMedia.API.Controllers
             return Ok(updatedUser);
         }
 
-        [HttpGet("getUserProfile")]
+        [HttpPost("getUserProfile")]
         public async Task<IActionResult> GetUserProfile(User user)
         {
             user.Username = user.Username.ToLower();
