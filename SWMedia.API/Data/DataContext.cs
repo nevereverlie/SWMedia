@@ -13,6 +13,7 @@ namespace SWMedia.API.Data
         public DbSet<Attribute> Attributes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Film> Films { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

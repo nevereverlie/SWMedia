@@ -130,11 +130,10 @@ namespace SWMedia.API.Data
 
         public async Task<User> GetUserProfile(User user)
         {
-            Console.WriteLine(user.Username);
             var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
             if (userProfile == null)
                 return null;
-
+                
             return userProfile;
         }
     }

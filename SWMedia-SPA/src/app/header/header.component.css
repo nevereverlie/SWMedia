@@ -14,7 +14,7 @@
   background-color: gray;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 900px;
+  height: 800px;
   max-width: 500px;
   text-align: center;
   border-width: 5px !important;
@@ -29,7 +29,13 @@
 }
 
 .ref {
-  margin-top: 150px;
+  margin-top: 125px;
+  font-size: large;
+  max-width: 180px;
+  width: 180px;
+  text-align: center;
+  word-wrap: none;
+  border-radius: 10px;
 }
 
 

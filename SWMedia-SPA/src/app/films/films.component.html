@@ -1,2 +1,66 @@
-<app-films-nav></app-films-nav>
-<router-outlet></router-outlet>
+<div class="all-content">
+<div class="container main">
+  <header class="header head">
+    <img
+      src="https://res.cloudinary.com/nevereverlie/image/upload/v1591094377/SWMedia_Films/logo_z1iizs.png"
+      alt="Star Wars"
+      class="logo header__logo"
+    />
+    <nav class="nav">
+      <a [routerLink]="['']" routerLinkActive="router-link-active"  class="nav__link" style="cursor: pointer;">Home</a>
+      <a [routerLink]="['/shop/categories']" routerLinkActive="router-link-active"  class="nav__link" style="cursor: pointer;">Marketplace</a>
+      <a [routerLink]="['/chat']" routerLinkActive="router-link-active"  class="nav__link" style="cursor: pointer;">Chat</a>
+      <a href="http://youtube.com" class="nav__link" style="cursor: pointer;">Trailers</a>
+      <a href="#bottom" class="nav__link" style="cursor: pointer;">About</a>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" name="bottom" id="bottom">
+      <span class="hero__subtitle animated fadeInLeft">Эпизод IX</span>
+      <h1 class="hero__title animated delay-03s fadeInLeft">
+        Скайуокер. Восход
+      </h1>
+      <p class="hero__description animated delay-1s fadeInLeft">
+        Фильм завершает невероятную историю семьи Скайуокеров, длящуюся уже
+        более сорока лет, и обещает дать ответы на все загадки из предыдущих
+        серий. Зрителя ожидают старые и новые герои, уникальные миры,
+        увлекательные путешествия на край Галактики и грандиозный финал
+        фантастической саги
+      </p>
+      <div class="animated delay-2s fadeInUp">
+        <span class="hero__premier">Премьера</span>
+        <span class="hero__date">19 декабря 2019</span>
+        <a
+          data-fancybox
+          href="https://www.youtube.com/watch?v=KVRBfWQgyuY"
+          class="button-play hero__button-play"
+          data-target="https://www.youtube.com/watch?v=KVRBfWQgyuY"
+        >
+          Смотреть трейлер
+        </a>
+      </div>
+    </div>
+    <!-- /.hero -->
+    <div class="episodes">
+      <h2 class="episodes__title mb-3">See all episodes:</h2>
+      <owl-carousel [options]="SlideOptions" [items]="Images" [carouselClasses]="['owl-theme', 'sliding']">
+        <div class="item" *ngFor="let img of Images">
+          <div class="item-box" style="align-content: center">
+            <img style="height: 260px; width: 100%; border-radius: 25px;" src={{img}}/>
+          </div>
+        </div>
+      </owl-carousel>
+    </div>
+  </main>
+</div>
+<!-- /.container -->
+
+<footer>
+  <div class="footer">
+    <hr />
+      <P>Copyright ╙</P>
+    <p>Контакты: +3806805358XX</p>
+  </div>
+</footer>
+<!-- /.footer -->
+</div>

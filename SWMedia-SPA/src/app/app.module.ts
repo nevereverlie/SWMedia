@@ -15,6 +15,7 @@ import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {OwlModule} from 'ngx-owl-carousel'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +35,6 @@ import { routes } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { HeaderComponent } from './header/header.component';
 import { ShopNavComponent } from './shop/shop-nav/shop-nav.component';
-import { FilmsNavComponent } from './films/films-nav/films-nav.component';
 import { ShopCategoriesComponent } from './shop/shop-categories/shop-categories.component';
 import { ShopCategoryComponent } from './shop/shop-category/shop-category.component';
 import { ShopProductComponent } from './shop/shop-product/shop-product.component';
@@ -61,7 +61,6 @@ export function tokenGetter() {
       RegisterComponent,
       HeaderComponent,
       ShopNavComponent,
-      FilmsNavComponent,
       ShopCategoriesComponent,
       ShopCategoryComponent,
       ShopProductComponent,
@@ -92,7 +91,8 @@ export function tokenGetter() {
       DialogModule,
       ButtonModule,
       BreadcrumbModule,
-      ModalModule.forRoot()
+      ModalModule.forRoot(),
+      OwlModule
    ],
    providers: [
       AuthService,
