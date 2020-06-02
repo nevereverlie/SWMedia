@@ -14,6 +14,7 @@
 *:before {
   box-sizing: border-box;
   padding: 0;
+  font-family: 'Raleway', sans-serif;
 }
 
 owl-carousel {
@@ -36,11 +37,11 @@ body {
 }
 
 .all-content {
-  background: #010101 url("https://res.cloudinary.com/nevereverlie/image/upload/v1591094378/SWMedia_Films/main-bg_sqqalh.jpg") top right no-repeat !important;
-  background-size: contain;
-  background-attachment: flex;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #ffffff;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
 }
 
@@ -59,6 +60,7 @@ body {
 
 .header__logo {
   margin-right: 70px;
+  width: 200px;
 }
 
 .nav__link {
@@ -72,19 +74,20 @@ body {
   margin-top: 78px;
   font-size: 40px;
   line-height: 100%;
-  font-family: "Russo One", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .hero__title {
   margin-top: 5px;
   font-size: 64px;
   line-height: 78%;
-  font-family: "Russo One", sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin-bottom: 25px;
+  color: #ffffff;
 }
 
 .hero__description {
-  font-family: "Russo One", sans-serif;
+  font-family: 'Raleway', sans-serif;
   max-width: 572px;
   font-size: 18px;
   line-height: 150%;
@@ -97,6 +100,7 @@ body {
   line-height: 150%;
   color: #b02000;
   margin-bottom: 5px;
+  font-weight: 600;
 }
 
 .hero__date {
@@ -118,6 +122,7 @@ body {
   font-size: 14px;
   line-height: 16px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .button-play:after {
@@ -144,6 +149,10 @@ body {
   top: -8px;
 }
 
+.modalDialog {
+  height: 499px;
+}
+
 .episodes {
   padding: 60px 0;
 }
@@ -153,6 +162,7 @@ body {
   line-height: 150%;
   margin-bottom: 0;
   padding-left: 20px;
+  color:whitesmoke;
 }
 
 .slider {
@@ -165,18 +175,20 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 250px;
-  min-height: 200px;
+  width: 300px;
+  min-height: 250px;
+  max-height: 250px;
   margin-top: 20px;
   margin-left: 20px;
   padding: 30px;
   box-shadow: 0px 10px 26px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 25px;
+  cursor: pointer;
 }
 .slider__item:hover {
   background: rgba(64, 101, 255, 0.5);
   box-shadow: 0px 10px 26px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
+  border-radius: 25px;
   transition: all 0.2 ease;
 }
 .slider__item:before {
@@ -196,6 +208,11 @@ body {
   top: 0;
   left: 0;
   z-index: -2;
+}
+
+.slider__title {
+  font-size: 24px;
+  color: whitesmoke;
 }
 
 .slider__item:hover:before {

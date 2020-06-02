@@ -10,11 +10,16 @@ export class ShopNavComponent implements OnInit {
   constructor() { }
 
   displayContacts: boolean;
+  displayDelivery: boolean;
 
   ngOnInit() {
   }
 
   showContacts() {
     this.displayContacts = true;
+  }
+
+  showDelivery() {
+    this.displayDelivery = true;
   }
 }

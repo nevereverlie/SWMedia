@@ -16,6 +16,7 @@ import {ButtonModule} from 'primeng/button';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {OwlModule} from 'ngx-owl-carousel'
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,7 @@ import { getAuthServiceConfigs } from './socialLoginConfig';
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { ShopComponent } from './shop/shop.component';
-import { FilmsComponent } from './films/films.component';
+import { FilmsComponent, SafePipe } from './films/films.component';
 import { ChatComponent } from './chat/chat.component';
 import { routes } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
@@ -47,6 +48,8 @@ import { CategoryResolver } from './shop/_resolvers/category.resolver';
 import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
 import { OrderResolver } from './shop/_resolvers/order.resolver';
 import { ShopCheckoutComponent } from './shop/shop-checkout/shop-checkout.component';
+import { FilmsService } from './_services/films.service';
+import { ShopFooterComponent } from './shop/shop-footer/shop-footer.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -65,7 +68,9 @@ export function tokenGetter() {
       ShopCategoryComponent,
       ShopProductComponent,
       ShopCartComponent,
-      ShopCheckoutComponent
+      ShopCheckoutComponent,
+      SafePipe,
+      ShopFooterComponent
    ],
    imports: [
       BrowserModule,
@@ -92,7 +97,8 @@ export function tokenGetter() {
       ButtonModule,
       BreadcrumbModule,
       ModalModule.forRoot(),
-      OwlModule
+      OwlModule,
+      SelectDropDownModule
    ],
    providers: [
       AuthService,
@@ -100,6 +106,7 @@ export function tokenGetter() {
       AlertifyService,
       AuthGuard,
       ShopService,
+      FilmsService,
       ProductResolver,
       CategoriesResolver,
       CategoryResolver,

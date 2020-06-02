@@ -2,6 +2,10 @@ img {
   height: 350px;
 }
 
+.card-subtitle {
+  max-height: 15px;
+}
+
 .transitive {
   transition: 1s;
 }
@@ -12,6 +16,10 @@ img {
 
 .card-img-wrapper {
   overflow: hidden;
+}
+
+.card-body {
+  max-height: 168.4px;
 }
 
 #price {

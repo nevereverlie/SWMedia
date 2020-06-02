@@ -19,12 +19,33 @@
             Our E-mail:<br>
             starwars.media@theforce.com
             <p-footer>
-                <button type="button" pButton icon="pi pi-check" (click)="displayContacts=false" label="Yes"></button>
+              <button type="button" pButton icon="pi pi-check" (click)="displayContacts=false" label="OK"></button>
             </p-footer>
-        </p-dialog>
+          </p-dialog>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Delivery</a>
+          <a class="nav-link" (click)="showDelivery()">Delivery</a>
+          <p-dialog header="DELIVERY" [(visible)]="displayDelivery" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            The Nova Poshta company is a leader in express deliveries in Ukraine, has the most extensive network of its branches and continues to expand it.
+            <br><br>
+            Delivery is carried out at your address or to a branch in your city, with the possibility of receiving payment in cash on the spot, after delivery of the goods (cash on delivery).
+            <br><br>
+            Delivery time 1-2 days.
+            <br><br>
+            Upon arrival of the departure at the destination you will receive a notification. In the case of “Door to door” delivery, the courier will contact you and agree on the delivery time.
+            <br><br>
+            Upon delivery, you have the opportunity to check the shipment for integrity and performance.
+            <br><br>
+            In the event of damage, discrepancy of the goods or their configuration, it is necessary, in the presence of the branch operator or courier of the Nova Poshta company, to draw up an appropriate act and refuse to receive the parcel.
+            <br><br>
+            After receiving the goods, claims for appearance and packaging are not accepted.
+            It is not the courier's responsibility to configure the delivered equipment.
+            <br><br>
+            The Nova Poshta convenient widgets will help you calculate the cost of delivery and track the status of the shipment!
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" (click)="displayDelivery=false" label="Okay"></button>
+            </p-footer>
+          </p-dialog>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Payment</a>
