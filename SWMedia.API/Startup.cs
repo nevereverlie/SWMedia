@@ -73,6 +73,7 @@ namespace SWMedia.API
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IShopRepository, ShopRepository>();
             services.AddScoped<IChatRepository, ChatRepository>();
+            services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters
