@@ -1,26 +1,29 @@
-<form #registerForm="ngForm" (ngSubmit)="register()">
+<form #registerForm="ngForm" (ngSubmit)="register()" class="needs-validation mt-3 mb-3 ml-3 mr-3" novalidate>
   <h2 class="text-center text-primary">Sign Up</h2>
   <hr>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username">
+    <input type="text" class="form-control" required name="username" [(ngModel)]="model.username" placeholder="Username *">
   </div>
 
   <div class="form-group">
-    <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password">
+    <input type="password" class="form-control" required name="password" [(ngModel)]="model.password" placeholder="Password *" aria-describedby="passHelp">
+    <small id="passHelp" class="form-text text-muted">We'll never share your password with anyone else</small>
   </div>
 
   <div class="form-group">
-    <input type="email" class="form-control" required name="email" [(ngModel)]="model.email" placeholder="E-mail">
+    <input type="email" class="form-control" required name="email" [(ngModel)]="model.email" placeholder="E-mail *">
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="phone" [(ngModel)]="model.phone" placeholder="Phone">
+    <input type="text" class="form-control" required name="phone" [(ngModel)]="model.phone" placeholder="Phone *">
   </div>
 
   <div class="form-group text-center">
     <button class="btn btn-success" type="submit">Register</button>
-    <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    <button class="btn btn-default" type="button" (click)="bsModalRef.hide()">Cancel</button>
   </div>
+
+
 
 </form>

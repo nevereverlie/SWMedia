@@ -1,2 +1,132 @@
-<app-films-nav></app-films-nav>
-<router-outlet></router-outlet>
+<div
+  class="all-content"
+  [ngStyle]="{ 'background-image': 'url(' + episode.bgUrl + ')' }"
+>
+  <!-- Header -->
+  <div class="container main">
+    <header class="header head">
+      <img
+        src="https://res.cloudinary.com/nevereverlie/image/upload/v1591112685/SWMedia_Films/sw_fvwg9a.svg"
+        alt="Star Wars"
+        class="logo header__logo"
+        [routerLink]="['']"
+        style="cursor: pointer;"
+      />
+      <nav class="nav">
+        <a
+          [routerLink]="['']"
+          routerLinkActive="router-link-active"
+          class="nav__link"
+          style="cursor: pointer;"
+          >Home</a
+        >
+        <a
+          [routerLink]="['/shop/categories']"
+          routerLinkActive="router-link-active"
+          class="nav__link"
+          style="cursor: pointer;"
+          >Marketplace</a
+        >
+        <a
+          [routerLink]="['/chat']"
+          routerLinkActive="router-link-active"
+          class="nav__link"
+          style="cursor: pointer;"
+          >Chat</a
+        >
+        <a
+          href="https://www.youtube.com/playlist?list=PL74FM0HYj5I3Shlt9muirTWKNkQKuzwSl"
+          class="nav__link"
+          style="cursor: pointer;"
+          >Trailers</a
+        >
+        <a
+          href="https://swmedia.azurewebsites.net/films/#bottom"
+          class="nav__link"
+          style="cursor: pointer;"
+          >About</a
+        >
+      </nav>
+    </header>
+    <!-- Hero -->
+    <main>
+      <div class="hero" name="bottom" id="bottom">
+        <span class="hero__subtitle animated fadeInLeft">{{
+          episode.episode
+        }}</span>
+        <h1 class="hero__title animated delay-03s fadeInLeft">
+          {{ episode.title }}
+        </h1>
+        <p class="hero__description animated delay-1s fadeInLeft">
+          {{ episode.description }}
+        </p>
+        <div class="animated delay-2s fadeInUp">
+          <span class="hero__premier">Premier:</span>
+          <span class="hero__date">{{ episode.premier }}</span>
+          <a
+            class="button-play hero__button-play"
+            (click)="openModalTrailer(template)"
+          >
+            Watch trailer
+          </a>
+          <ng-template #template>
+            <div class="modalDialog">
+              <iframe
+                width=100%
+                height=500px
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                [src]="episode.trailerUrl | safe"
+              ></iframe>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <!-- Episodes -->
+      <div class="episodes">
+        <h2 class="episodes__title mb-3">See all episodes:</h2>
+        <!-- Carousel -->
+        <owl-carousel
+          class=""
+          [options]="SlideOptions"
+          [items]="films"
+          [carouselClasses]="['owl-theme', 'sliding']"
+        >
+          <div
+            class="slider__item"
+            *ngFor="let film of films"
+            (click)="changeEpisode(film)"
+          >
+            <img
+              class="slider__image"
+              style="height: 260px; width: 100%; border-radius: 25px;"
+              src="{{ film.bgUrl }}"
+            />
+            <div class="slider__year">{{ film.year }}</div>
+            <h3 class="slider__title">
+              {{ film.episode }}: <br />
+              {{ film.title }}
+            </h3>
+            <div class="slider__rating">
+              <span class="slider__rating-label">Rating</span>
+            </div>
+          </div>
+        </owl-carousel>
+      </div>
+    </main>
+  </div>
+  <!--FOOTER-->
+  <footer>
+    <footer class="page-footer font-small blue">
+      <!-- Copyright -->
+      <div
+        class="footer-copyright text-center py-3"
+        style="color: honeydew; background-color: #1a1a1a;"
+      >
+        © 2020 Copyright:
+        <a href="https://swmedia.azurewebsites.net"> SWMedia.net</a>
+      </div>
+    </footer>
+  </footer>
+</div>

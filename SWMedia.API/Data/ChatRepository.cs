@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,15 @@ namespace SWMedia.API.Data
         {
             _context = context;
         }
-        public Task<Message> GetMessage(int id)
+        public Task<Message> GetMessage(int messageId)
         {
-            throw new System.NotImplementedException();
+            var messageFromRepo = _context.Messages.FirstOrDefaultAsync(m => m.Id == messageId);
+
+            if (messageFromRepo == null)
+                return null;
+
+            return messageFromRepo;
+
         }
 
         public async Task<List<Message>> GetMessages()
@@ -30,14 +37,14 @@ namespace SWMedia.API.Data
 
         public async Task<User> GetUser(int id)
         {
-            var user = await _context.Users.Include(m => m.MessagesSent).FirstOrDefaultAsync(u => u.UserId == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == id);
 
             return user;
         }
 
         public async Task<IEnumerable<User>> GetUsers()
         {
-            var users = await _context.Users.Include(m => m.MessagesSent).ToListAsync();
+            var users = await _context.Users.ToListAsync();
 
             return users;
         }

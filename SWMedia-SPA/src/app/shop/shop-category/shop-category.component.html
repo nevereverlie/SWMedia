@@ -1,13 +1,52 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2" style="font-size: 18px; margin-left: 30px;">
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Home
+    </li>
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['/shop/categories']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Categories
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{products[0].category.categoryName}}</li>
+  </ol>
+</nav>
+<!-- Category -->
 <div class="row">
-  <div *ngFor="let product of products" class="col-lg-3 rounded"  >
-    <div class="card ml-3 mt-3" style="width: 18rem;">
-      <div class="card-img-wrapper" [routerLink]="[product.productId]" routerLinkActive="router-link-active">
-        <img class="card-img-top transitive" src="{{product.imageUrl}}" alt="{{product.title}}">
+  <div *ngFor="let product of products" class="col-3 rounded">
+    <div class="card ml-2 mt-3" style="width: 18rem;">
+      <div
+        class="card-img-wrapper"
+        [routerLink]="[product.productId]"
+        routerLinkActive="router-link-active"
+      >
+        <img
+          class="card-img-top transitive"
+          src="{{ product.imageUrl }}"
+          alt="{{ product.title }}"
+        />
       </div>
       <div class="card-body">
-        <h5 class="card-title">{{product.title}}</h5>
-        <p class="card-text">{{product.description}}</p>
-        <a class="btn btn-primary" (click)="AddToCart(product.productId)">Add to cart</a>
+        <h5 class="card-title">{{ product.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-mute">{{ product.description }}</h6>
+        <h4 class="card-text" id="price">{{ product.price }} UAH</h4>
+        <button
+          class="btn btn-primary"
+          style="float: right;"
+          (click)="AddToCart(product.productId)"
+        >
+          <i class="fa fa-shopping-cart" style="font-size: 20px; padding-right: 10px;"></i>
+          Add to cart
+        </button>
       </div>
     </div>
   </div>

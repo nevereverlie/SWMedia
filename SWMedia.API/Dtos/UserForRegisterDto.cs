@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SWMedia.API.Dtos
@@ -16,5 +17,9 @@ namespace SWMedia.API.Dtos
 
         [Required]
         public string Phone { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string SelfDescription { get; set; }
+        public string Country { get; set; }
+        public string City { get; set; }
     }
 }

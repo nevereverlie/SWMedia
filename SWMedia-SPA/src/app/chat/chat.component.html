@@ -1,27 +1,50 @@
-<div id="main-container" style="text-align:center">
-  <h1>
-    <a href="https://codingblast.com/asp-net-core-signalr-simple-chat/" target="_new">
-      ASP.NET Core SignalR Chat with Angular
-    </a>
-  </h1>
-
+<div class="content" [ngStyle]="{'backgroundColor': darkMode ? '#404040' : '#fff' }">
   <div class="container">
-    <h2>Hello {{nick}}!</h2>
-    <form (ngSubmit)="sendMessage()" #chatForm="ngForm">
-      <div>
-        <label for="message">Message</label>
-        <input type="text" id="message" name="message" [(ngModel)]="message" required>
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+      <a class="navbar-brand" [routerLink]="['']" routerLinkActive="router-link-active">Star Wars Media</a>
+      <form class="form-inline">
+        <p-accordion>
+          <p-accordionTab header="Options" style="text-align: center;">
+            <p class="mb-2">Light Mode</p>
+            <p-inputSwitch (onChange)="!darkMode" [(ngModel)]="darkMode" name="darkMode"></p-inputSwitch>
+          </p-accordionTab>
+        </p-accordion>
+      </form>
+    </nav>
+    <div #scrollMe class="outbox-right" *ngIf="isCurrentUser">
+      <div class="message" *ngFor="let message of messages">
+        <label id="messageBox" for="message">{{ message }}</label>
       </div>
-      <button type="submit" id="sendmessage" [disabled]="!chatForm.valid">
-        Send
-      </button>
-    </form>
-  </div>
-
-  <div class="container" *ngIf="messages.length > 0">
-    <div *ngFor="let message of messages">
-      <span>{{message}}</span>
+    </div>
+    <div #scrollMe class="outbox-left" *ngIf="!isCurrentUser">
+      <div class="message" *ngFor="let message of messages">
+        <label id="messageBox" for="message">{{ message }}</label>
+      </div>
+    </div>
+    <div class="align-bottom">
+      <form id="inputForm" #chatForm="ngForm" (ngSubmit)="sendMessage(); chatForm.reset()">
+        <div class="input-group mb-3">
+          <input
+            type="text"
+            id="message"
+            name="message"
+            [(ngModel)]="message"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-lg"
+            autocomplete="off"
+            required
+          />
+          <button
+            class="btn btn-dark"
+            type="submit"
+            id="sendmessage"
+            [disabled]="!chatForm.valid"
+          >
+            <i class="pi pi-reply"></i>
+          </button>
+        </div>
+      </form>
     </div>
   </div>
-
 </div>

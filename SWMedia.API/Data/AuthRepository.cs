@@ -99,5 +99,42 @@ namespace SWMedia.API.Data
             }
             return false;
         }
+
+        public async Task<User> UpdateUser(User user, string password)
+        {
+            var updatedUser = await _context.Users.FirstOrDefaultAsync(x => x.Username == user.Username);
+
+            if (updatedUser == null)
+                return null;
+            /*
+            if (!VerifyPasswordHash(password, updatedUser.PasswordHash, updatedUser.PasswordSalt))
+            {
+                byte[] passwordHash, passwordSalt;
+
+                CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+                updatedUser.PasswordHash = passwordHash;
+                updatedUser.PasswordSalt = passwordSalt;
+            }
+            */
+            updatedUser.Email = user.Email;
+            updatedUser.Phone = user.Phone;
+            updatedUser.SelfDescription = user.SelfDescription;
+            updatedUser.Country = user.Country;
+            updatedUser.City = user.City;
+            
+            await _context.SaveChangesAsync();
+
+            return updatedUser;
+        }
+
+        public async Task<User> GetUserProfile(int userId)
+        {
+            var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            if (userProfile == null)
+                return null;
+                
+            return userProfile;
+        }
     }
 }

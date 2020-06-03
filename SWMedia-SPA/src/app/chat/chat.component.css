@@ -1,0 +1,64 @@
+.outbox-right {
+  height: 300px;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+  padding: 15px;
+  float: right;
+  text-align: right;
+}
+.outbox-left {
+  height: 500px;
+  max-height: 500px;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+  padding: 15px;
+  text-align: left;
+}
+
+.content {
+  background-color: grey;
+  height: 100vh;
+  min-height: 100% !important;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+.container {
+  width: 50%;
+  height: 100%;
+  padding: 0%;
+  background-color: #fff;
+}
+
+.form-control {
+  font-size: large;
+  font-weight: bold;
+}
+
+.message {
+  max-width: 600px;
+  word-wrap: break-word;
+}
+
+body {
+  background: grey !important;
+}
+
+html, body {
+  max-height: 1080px !important;
+  height: 1080px !important;
+  min-height: 100% !important;
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+#inputForm {
+  padding: 15px;
+  margin-top: 50px;
+}
+#messageBox {
+  padding: 10px;
+  background-color: #404040;
+  color: white;
+}

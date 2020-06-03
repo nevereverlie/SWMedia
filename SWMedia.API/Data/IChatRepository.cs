@@ -8,7 +8,7 @@ namespace SWMedia.API.Data
     {
         Task<User> GetUser(int id);
         Task<IEnumerable<User>> GetUsers();
-        Task<Message> GetMessage(int id);
+        Task<Message> GetMessage(int messageId);
         Task<List<Message>> GetMessages();
     }
 }

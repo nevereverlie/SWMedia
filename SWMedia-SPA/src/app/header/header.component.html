@@ -1,25 +1,30 @@
+<!--NAVBAR-->
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">Star Wars Media</a>
+    <img style="width: 150px;" src="https://res.cloudinary.com/nevereverlie/image/upload/v1591112685/SWMedia_Films/sw_fvwg9a.svg">
+    <a class="navbar-brand ml-3" [routerLink]="['/home']">Star Wars Media</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/shop/categories']">Marketplace</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/films']">Films</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/chat']">Chat</a>
+      <li
+        *ngIf="!this.authService.loggedIn()"
+        class="nav-item"
+        routerLinkActive="active"
+        style="cursor: pointer;"
+      >
+        <a class="nav-link" (click)="registerToggle(); openModalWithComponent()">Registration</a>
       </li>
     </ul>
 
-    <div *ngIf="this.authService.loggedIn();" class="dropdown" dropdown>
+    <div *ngIf="this.authService.loggedIn()" class="dropdown" dropdown>
       <a class="dropdown-toggle text-light" dropdownToggle>
-        Welcome, {{ authService.decodedToken?.given_name || authService.decodedToken?.unique_name  | titlecase }}
+        Welcome,
+        {{
+          authService.decodedToken?.given_name ||
+            authService.decodedToken?.unique_name | titlecase
+        }}
       </a>
 
       <div class="dropdown-menu mt-3" *dropdownMenu>
-        <a class="dropdown-item"><i class="fa fa-user"></i>Edit Profile</a>
+        <a class="dropdown-item" [routerLink]="['/profile']" routerLinkActive="router-link-active" ><i class="fa fa-user"></i>Edit Profile</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()"
           ><i class="fa fa-sign-out"></i>Logout</a
@@ -28,7 +33,7 @@
     </div>
 
     <form
-      *ngIf="!this.authService.loggedIn();"
+      *ngIf="!this.authService.loggedIn()"
       #loginForm="ngForm"
       class="form-inline my-2 my-lg-0 mw-100"
       (ngSubmit)="login()"
@@ -61,28 +66,65 @@
         (click)="signinWithGoogle()"
         type="button"
       >
-        Google
+        <i class="fa fa-google" style="font-size: 2em;"></i>
       </button>
     </form>
   </div>
 </nav>
-
-
-<div class="container mt-5">
-  <div *ngIf="!registerMode" style="text-align: center">
-    <h1>Star Wars Media</h1>
-    <p class="lead">There will be 3 columns for other pages</p>
-    <div class="text-center">
-      <button class="btn btn-primary btn-lg mr-2" (click)="registerToggle()">Register</button>
-    </div>
-  </div>
-
-  <div *ngIf="registerMode" class="container">
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <app-register (cancelRegistration)="cancelRegistrationMode($event)"></app-register>
-      </div>
+<!--REGISTRATION FORM-->
+<div *ngIf="registerMode" style="margin: auto; margin-top: 3em;">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <app-register
+        (cancelRegistration)="cancelRegistrationMode($event)"
+      ></app-register>
     </div>
   </div>
 </div>
+<!--CONTENT-->
+<div class="row" style="margin: 0; display: flex; justify-content: space-between; max-width: 100%;">
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_fill,e_improve,g_face:center,h_800,q_100:444,w_500/v1591052887/SWMedia_Main/1_tqomox.jpg)'}">
+    <div class="column-content">
+      <h3 class="title mb-5 marketplace">
+        MARKETPLACE
+      </h3>
+      <p class="description" style="color: #999999;">
+        An ability to purchase merch and products, dedicated to the Star Wars Universe
+      <p>
+    </div>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/shop/categories']" routerLinkActive="router-link-active" >Explore</button>
+  </div>
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_scale,h_800,q_100,w_500/v1591192633/SWMedia_Main/2_ltiwuy.jpg)'}">
+    <div class="column-content">
+      <h3 class="title mb-5 films">
+        EPISODES
+      </h3>
+      <p class="description" style="color: #999999;">
+        Opportunity to watch every episode of this saga conviniently
+      </p>
+    </div>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/films']" routerLinkActive="router-link-active" >Watch</button>
+  </div>
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_scale,h_800,q_100,w_500/v1591192855/SWMedia_Main/3_z0tnuk.jpg)'}">
+    <div class="column-content">
+      <h3 class="title mb-5 chat">
+        CHAT
+      </h3>
+      <p class="description" style="color: #999999;">
+        Possibility of finding soulmates by texting and communicating in online chat
+      </p>
+    </div>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/chat']" routerLinkActive="router-link-active" >Communicate</button>
+  </div>
+</div>
+<!--FOOTER-->
+<footer>
+  <footer class="page-footer font-small blue">
 
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="color: honeydew;  background-color: #1a1a1a;">© 2020 Copyright:
+      <a href="https://swmedia.azurewebsites.net"> SWMedia.net</a>
+    </div>
+
+  </footer>
+</footer>

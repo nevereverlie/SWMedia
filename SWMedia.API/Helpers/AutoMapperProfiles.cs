@@ -8,10 +8,8 @@ namespace SWMedia.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserForListDto>()
-                .ForMember(dest => dest.Age, opt => 
-                    opt.MapFrom(src => src.DateOfBirth.CalculateAge()));
-
+            CreateMap<User, UserForListDto>();
+            CreateMap<User, UserForUpdateDto>();
         }
     }
 }

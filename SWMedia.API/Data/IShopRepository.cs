@@ -14,5 +14,6 @@ namespace SWMedia.API.Data
         Task<Order> AddToOrder(Order order);
 
         Task<Order> RemoveFromOrder(int id);
+        void DisposeOrder(int userId);
     }
 }

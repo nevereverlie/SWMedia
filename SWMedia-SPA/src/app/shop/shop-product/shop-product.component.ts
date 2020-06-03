@@ -38,6 +38,7 @@ export class ShopProductComponent implements OnInit {
       this.product = data["product"];
     });
     this.GetAttributes(this.productId);
+    console.log(this.product);
   }
 
   GetAttributes(productId: number) {
@@ -46,7 +47,6 @@ export class ShopProductComponent implements OnInit {
       .subscribe(
         (response: any) => {
           this.attributes = response;
-          console.log(this.attributes);
         },
         (error) => {
           this.alertify.error(error);

@@ -1,3 +1,5 @@
+using System.Net;
+using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,7 +27,6 @@ namespace SWMedia.API.Data
                 join c in _context.Categories on p.CategoryId equals c.CategoryId
                 where c.CategoryName == categoryName
                 select p;
-            //return await products.Include(p => p.Category).ToListAsync();
             return await products.ToListAsync();
         }
 
@@ -54,8 +55,16 @@ namespace SWMedia.API.Data
                 join p in _context.Products on o.ProductId equals p.ProductId
                 where o.UserId == userId
                 select o;
+            
+            return await order.ToListAsync();
+        }
 
-            return await order.Include(p => p.Product).ToListAsync();
+        public void DisposeOrder(int userId)
+        {
+            System.Console.WriteLine(userId);
+            _context.Orders.RemoveRange(_context.Orders.Where(o => o.UserId == userId));
+            _context.SaveChanges();
+
         }
 
         public async Task<Order> AddToOrder(Order order)

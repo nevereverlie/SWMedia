@@ -13,6 +13,8 @@ import { CategoriesResolver } from './shop/_resolvers/categories.resolver';
 import { CategoryResolver } from './shop/_resolvers/category.resolver';
 import { ShopCartComponent } from './shop/shop-cart/shop-cart.component';
 import { OrderResolver } from './shop/_resolvers/order.resolver';
+import { ShopCheckoutComponent } from './shop/shop-checkout/shop-checkout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export const routes: Routes = [
@@ -23,12 +25,14 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'main', component: HeaderComponent},
+      { path: 'profile', component: ProfileComponent},
       { path: 'shop', component: ShopComponent,
         children: [
           { path: 'categories', component: ShopCategoriesComponent, resolve: {categories: CategoriesResolver} },
           { path: 'categories/:category', component: ShopCategoryComponent, resolve: {category: CategoryResolver} },
           { path: 'categories/:category/:productId', component: ShopProductComponent, resolve: {product: ProductResolver} },
           { path: 'cart', component: ShopCartComponent, resolve: {order: OrderResolver} },
+          { path: 'checkout', component: ShopCheckoutComponent },
           { path: '', redirectTo: 'categories', pathMatch: 'full'}
         ]
       },

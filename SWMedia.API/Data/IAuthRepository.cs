@@ -11,5 +11,7 @@ namespace SWMedia.API.Data
         Task<bool> GoogleUserExists(string email);
         Task<User> LoginUser(string username, string password);
         Task<GoogleUser> LoginGoogleUser(string email);
+        Task<User> UpdateUser(User user, string password);
+        Task<User> GetUserProfile(int userId);
     }
 }
