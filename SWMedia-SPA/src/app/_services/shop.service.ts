@@ -73,9 +73,7 @@ export class ShopService {
     const model = {
       modelName: "Address",
       calledMethod: "getCities",
-      methodProperties: {
-        //Ref: 'ebc0eda9-93ec-11e3-b441-0050568002cf'
-      },
+      methodProperties: {},
       apiKey: "f956a97c3fd659cf311638241d823258",
     };
 

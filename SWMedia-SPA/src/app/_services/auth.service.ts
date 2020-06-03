@@ -75,7 +75,7 @@ export class AuthService {
   }
 
   GetProfile(id: number) {
-    return this.http.post(this.baseUrl + 'getUserProfile', id);
+    return this.http.post(this.baseUrl + 'getUserProfileWeb', id);
   }
 
   UpdateProfile(user: any) {

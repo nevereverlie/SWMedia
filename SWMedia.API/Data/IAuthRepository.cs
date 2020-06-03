@@ -12,6 +12,7 @@ namespace SWMedia.API.Data
         Task<User> LoginUser(string username, string password);
         Task<GoogleUser> LoginGoogleUser(string email);
         Task<User> UpdateUser(User user, string password);
-        Task<User> GetUserProfile(int userId);
+        Task<User> GetUserProfileMobile(User user);
+        Task<User> GetUserProfileWeb(int userId);
     }
 }

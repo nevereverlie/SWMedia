@@ -165,9 +165,22 @@ namespace SWMedia.API.Controllers
         }
 
         [HttpPost("getUserProfile")]
-        public async Task<IActionResult> GetUserProfile([FromBody]int userId)
+        public async Task<IActionResult> GetUserProfileMobile(User user)
         {
-            var userProfile = await _repo.GetUserProfile(userId);
+            // var userProfile = await _repo.GetUserProfile(userId);
+
+            // var profileToReturn = _mapper.Map<UserForListDto>(userProfile);
+            // return Ok(profileToReturn);
+
+            var userProfile = await _repo.GetUserProfileMobile(user);
+
+            return Ok(userProfile);
+        }
+        
+        [HttpPost("getUserProfileWeb")]
+        public async Task<IActionResult> GetUserProfileWeb([FromBody]int userId)
+        {
+            var userProfile = await _repo.GetUserProfileWeb(userId);
 
             var profileToReturn = _mapper.Map<UserForListDto>(userProfile);
             return Ok(profileToReturn);

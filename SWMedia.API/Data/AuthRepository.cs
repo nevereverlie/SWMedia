@@ -128,7 +128,22 @@ namespace SWMedia.API.Data
             return updatedUser;
         }
 
-        public async Task<User> GetUserProfile(int userId)
+        public async Task<User> GetUserProfileMobile(User user)
+        {
+            // var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
+            // if (userProfile == null)
+            //     return null;
+                
+            // return userProfile;
+            var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            
+            if (userProfile == null)
+                return null;
+
+            return userProfile;
+        }
+
+        public async Task<User> GetUserProfileWeb(int userId)
         {
             var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             if (userProfile == null)
