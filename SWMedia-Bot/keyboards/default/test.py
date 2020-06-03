@@ -1,0 +1,50 @@
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
+
+genres = ReplyKeyboardMarkup(
+  keyboard=[
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie"),
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie"),
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ],
+    [
+      KeyboardButton(text="Action"),
+      KeyboardButton(text="Simulation"),
+      KeyboardButton(text="Indie")
+    ]
+  ],
+  resize_keyboard=True
+)
+
+platform
