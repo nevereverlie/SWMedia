@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ViewChild, ElementRef } from "@angular/core";
 import * as signalR from '@aspnet/signalr'
 import { AuthService } from '../_services/auth.service';
 import { UsersService } from '../_services/users.service';
@@ -16,8 +16,10 @@ export class ChatComponent {
   message = "";
   messages: string[] = [];
   isCurrentUser: false;
+  darkMode: boolean = true;
 
   constructor(private chatService: ChatService, private authService: AuthService) {}
+  @ViewChild('scrollMe') private myScrollContainer: ElementRef;
 
   public sendMessage(): void {
     this._hubConnection
@@ -48,9 +50,21 @@ export class ChatComponent {
       );
 
     this._hubConnection.on("sendToAll", (nick: string, receivedMessage: string) => {
-        const text = `${receivedMessage}`;
+        const text = `${nick}: ${receivedMessage}`;
         this.messages.push(text);
       }
     );
+
+    this.scrollToBottom();
   }
+
+    ngAfterViewChecked() {
+      this.scrollToBottom();
+    }
+
+    scrollToBottom(): void {
+      try {
+          this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch(err) { }
+    }
 }

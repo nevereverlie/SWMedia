@@ -17,6 +17,7 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {OwlModule} from 'ngx-owl-carousel'
 import { SelectDropDownModule } from 'ngx-select-dropdown'
+import {InputSwitchModule} from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -100,7 +101,8 @@ export function tokenGetter() {
       BreadcrumbModule,
       ModalModule.forRoot(),
       OwlModule,
-      SelectDropDownModule
+      SelectDropDownModule,
+      InputSwitchModule
    ],
    providers: [
       AuthService,

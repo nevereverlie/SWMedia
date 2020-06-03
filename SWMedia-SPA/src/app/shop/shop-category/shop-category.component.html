@@ -1,3 +1,26 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2" style="font-size: 18px; margin-left: 30px;">
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Home
+    </li>
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['/shop/categories']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Categories
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{products[0].category.categoryName}}</li>
+  </ol>
+</nav>
+<!-- Category -->
 <div class="row">
   <div *ngFor="let product of products" class="col-3 rounded">
     <div class="card ml-2 mt-3" style="width: 18rem;">

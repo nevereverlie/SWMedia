@@ -22,7 +22,7 @@ export class ShopCategoryComponent implements OnInit {
 
   ngOnInit() {
     this.userId = +this.authService.decodedToken.nameid;
-
+    console.log(this.products);
     this.route.data.subscribe(data => {
       this.products = data['category'];
       console.log(this.products); //добавить в include category, чтоб вывести сюда ее название

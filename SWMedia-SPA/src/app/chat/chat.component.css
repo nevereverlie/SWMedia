@@ -8,8 +8,8 @@
   text-align: right;
 }
 .outbox-left {
-  height: 300px;
-  max-height: 300px;
+  height: 500px;
+  max-height: 500px;
   overflow-y: scroll;
   margin-bottom: 30px;
   padding: 15px;
@@ -26,6 +26,7 @@
 
 .container {
   width: 50%;
+  height: 100%;
   padding: 0%;
   background-color: #fff;
 }
@@ -54,6 +55,7 @@ html, body {
 
 #inputForm {
   padding: 15px;
+  margin-top: 50px;
 }
 #messageBox {
   padding: 10px;

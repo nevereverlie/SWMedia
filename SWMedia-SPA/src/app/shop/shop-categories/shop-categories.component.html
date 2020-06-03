@@ -1,3 +1,18 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2" style="font-size: 18px; margin-left: 30px;">
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Home
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Categories</li>
+  </ol>
+</nav>
+<!-- Categories -->
 <div class="container m-0 mw-100">
   <div class="row" style="align-content: space-between;">
     <div
@@ -9,7 +24,11 @@
       routerLinkActive="router-link-active"
       style="max-width: 300px; opacity: 100% !important;"
     >
-      <a class="categoryName" style="color: black; overflow: hidden; margin-top: 200px;">{{ category.categoryName }}</a>
+      <a
+        class="categoryName"
+        style="color: black; overflow: hidden; margin-top: 200px;"
+        >{{ category.categoryName }}</a
+      >
     </div>
   </div>
 </div>

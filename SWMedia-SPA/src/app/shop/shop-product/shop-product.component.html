@@ -1,11 +1,49 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb mt-2" style="font-size: 18px; margin-left: 30px;">
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Home
+    </li>
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['/shop/categories']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      Categories
+    </li>
+    <li
+      class="breadcrumb-item"
+      [routerLink]="['/shop/categories/t-shirts']"
+      routerLinkActive="router-link-active"
+      style="cursor: pointer;"
+    >
+      {{ product.category.categoryName }}
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{product.title}}</li>
+  </ol>
+</nav>
+<!-- Product -->
 <div class="container mt-4">
   <div class="row">
     <div class="col-sm-4">
       <div class="card">
-        <img class="card-img-top img-thumbnail" src="{{product.imageUrl}}" alt="{{product.title}}">
+        <img
+          class="card-img-top img-thumbnail"
+          src="{{ product.imageUrl }}"
+          alt="{{ product.title }}"
+        />
         <div class="card-body" *ngFor="let attribute of attributes">
           <div>
-            <p><b>{{attribute.attributeName}}</b>: {{attribute.value}}</p>
+            <p>
+              <b>{{ attribute.attributeName }}</b
+              >: {{ attribute.value }}
+            </p>
           </div>
         </div>
         <div class="card-footer">
@@ -13,8 +51,6 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-8">
-
-    </div>
+    <div class="col-sm-8"></div>
   </div>
 </div>

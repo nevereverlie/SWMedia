@@ -1,17 +1,22 @@
-<div class="content">
+<div class="content" [ngStyle]="{'backgroundColor': darkMode ? '#404040' : '#fff' }">
   <div class="container">
     <nav class="navbar navbar-dark bg-dark justify-content-between">
-      <a class="navbar-brand">Star Wars Media</a>
+      <a class="navbar-brand" [routerLink]="['']" routerLinkActive="router-link-active">Star Wars Media</a>
       <form class="form-inline">
-        <button class="btn btn-outline-warning my-2 my-sm-0">Options</button>
+        <p-accordion>
+          <p-accordionTab header="Options" style="text-align: center;">
+            <p class="mb-2">Light Mode</p>
+            <p-inputSwitch (onChange)="!darkMode" [(ngModel)]="darkMode" name="darkMode"></p-inputSwitch>
+          </p-accordionTab>
+        </p-accordion>
       </form>
     </nav>
-    <div class="outbox-right" *ngIf="isCurrentUser">
+    <div #scrollMe class="outbox-right" *ngIf="isCurrentUser">
       <div class="message" *ngFor="let message of messages">
         <label id="messageBox" for="message">{{ message }}</label>
       </div>
     </div>
-    <div class="outbox-left" *ngIf="!isCurrentUser">
+    <div #scrollMe class="outbox-left" *ngIf="!isCurrentUser">
       <div class="message" *ngFor="let message of messages">
         <label id="messageBox" for="message">{{ message }}</label>
       </div>
@@ -27,6 +32,7 @@
             class="form-control"
             aria-label="Default"
             aria-describedby="inputGroup-sizing-lg"
+            autocomplete="off"
             required
           />
           <button
