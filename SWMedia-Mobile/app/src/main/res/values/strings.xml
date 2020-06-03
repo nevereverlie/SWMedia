@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">SWMedia</string>
+    <string name="hintUsername">Username</string>
+    <string name="Username">Username:</string>
+    <string name="hintPassword">Password</string>
+    <string name="Password">Password:</string>
+    <string name="hint_email">E-mail</string>
+    <string name="email">E-mail:</string>
+    <string name="hint_number">Number</string>
+    <string name="number">Number:</string>
+    <string name="hint_phone">Phone</string>
+    <string name="phone">Phone:</string>
+    <string name="login">Login</string>
+    <string name="create">Create account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="new_user">New user?</string>
+    <string name="description">Description:</string>
+    <string name="hint_description">Description</string>
+    <string name="birthday">Birthday:</string>
+    <string name="hint_birthday">Birthday</string>
+    <string name="country">Country:</string>
+    <string name="hint_country">Country</string>
+    <string name="city">City:</string>
+    <string name="hint_city">City</string>
+</resources>
