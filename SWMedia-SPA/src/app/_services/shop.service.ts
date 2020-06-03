@@ -49,6 +49,10 @@ export class ShopService {
     return this.http.get(this.baseUrl + "cart/" + userId);
   }
 
+  DisposeOrder(userId: number) {
+    return this.http.post(this.baseUrl + 'disposeOrder', userId);
+  }
+
   loadAddreses() {
     const model = {
       apiKey: "f956a97c3fd659cf311638241d823258",

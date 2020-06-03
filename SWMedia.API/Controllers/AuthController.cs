@@ -159,7 +159,6 @@ namespace SWMedia.API.Controllers
                 SelfDescription = userForUpdate.SelfDescription,
                 City = userForUpdate.City
             };
-            Console.WriteLine(userToUpdate.Email);
             var updatedUser = await _repo.UpdateUser(userToUpdate, userForUpdate.Password);
 
             return Ok(updatedUser);
@@ -171,7 +170,6 @@ namespace SWMedia.API.Controllers
             var userProfile = await _repo.GetUserProfile(userId);
 
             var profileToReturn = _mapper.Map<UserForListDto>(userProfile);
-            Console.WriteLine(profileToReturn.Username);
             return Ok(profileToReturn);
         }
     }

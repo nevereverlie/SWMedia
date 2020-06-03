@@ -1,17 +1,9 @@
 <!--NAVBAR-->
 <nav class="navbar navbar-expand-md navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" [routerLink]="['/home']">Star Wars Media</a>
+    <img style="width: 150px;" src="https://res.cloudinary.com/nevereverlie/image/upload/v1591112685/SWMedia_Films/sw_fvwg9a.svg">
+    <a class="navbar-brand ml-3" [routerLink]="['/home']">Star Wars Media</a>
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/shop/categories']">Marketplace</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/films']">Films</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/chat']">Chat</a>
-      </li>
       <li
         *ngIf="!this.authService.loggedIn()"
         class="nav-item"
@@ -93,39 +85,36 @@
 <div class="row" style="margin: 0; display: flex; justify-content: space-between; max-width: 100%;">
   <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_fill,e_improve,g_face:center,h_800,q_100:444,w_500/v1591052887/SWMedia_Main/1_tqomox.jpg)'}">
     <div class="column-content">
-      <h3 class="title mb-5">
+      <h3 class="title mb-5 marketplace">
         MARKETPLACE
       </h3>
-      <h4 class="description">
-        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-        ipsum
-      </h4>
+      <p class="description" style="color: #999999;">
+        An ability to purchase merch and products, dedicated to the Star Wars Universe
+      <p>
     </div>
-    <button class="btn btn-lg btn-dark ref" [routerLink]="['/shop/categories']" routerLinkActive="router-link-active" >Marketplace</button>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/shop/categories']" routerLinkActive="router-link-active" >Explore</button>
   </div>
-  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/v1591039826/SWMedia_Main/2_hahemk.png)'}">
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_scale,h_800,q_100,w_500/v1591192633/SWMedia_Main/2_ltiwuy.jpg)'}">
     <div class="column-content">
-      <h3 class="title mb-5">
-        MARKETPLACE
+      <h3 class="title mb-5 films">
+        EPISODES
       </h3>
-      <h4 class="description">
-        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-        ipsum
-      </h4>
+      <p class="description" style="color: #999999;">
+        Opportunity to watch every episode of this saga conviniently
+      </p>
     </div>
-    <button class="btn btn-lg btn-dark ref" [routerLink]="['/films']" routerLinkActive="router-link-active" >Films</button>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/films']" routerLinkActive="router-link-active" >Watch</button>
   </div>
-  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/v1591039826/SWMedia_Main/3_znw6ng.png)'}">
+  <div class="col-4 column border border-dark" [ngStyle]="{'background-image': 'url(https://res.cloudinary.com/nevereverlie/image/upload/c_scale,h_800,q_100,w_500/v1591192855/SWMedia_Main/3_z0tnuk.jpg)'}">
     <div class="column-content">
-      <h3 class="title mb-5">
-        MARKETPLACE
+      <h3 class="title mb-5 chat">
+        CHAT
       </h3>
-      <h4 class="description">
-        Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem
-        ipsum
-      </h4>
+      <p class="description" style="color: #999999;">
+        Possibility of finding soulmates by texting and communicating in online chat
+      </p>
     </div>
-    <button class="btn btn-lg btn-dark ref" [routerLink]="['/chat']" routerLinkActive="router-link-active" >Chat</button>
+    <button class="btn btn-lg btn-dark ref" [routerLink]="['/chat']" routerLinkActive="router-link-active" >Communicate</button>
   </div>
 </div>
 <!--FOOTER-->

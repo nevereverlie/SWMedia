@@ -2,6 +2,9 @@ img {
   width: 100px;
 }
 
+.container, .main {
+  margin-bottom: 400px;
+}
 
 .col, td {
   text-align: center;
@@ -25,4 +28,15 @@ img {
 
 .close {
   position: absolute;
+}
+
+.checkout {
+  float: right;
+  font-size: large;
+  font-weight: 600;
+}
+
+
+footer {
+  margin-top: 500px !important;
 }

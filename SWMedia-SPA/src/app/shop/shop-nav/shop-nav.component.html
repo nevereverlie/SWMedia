@@ -48,10 +48,74 @@
           </p-dialog>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Payment</a>
+          <a class="nav-link">Payment</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Guaranties</a>
+          <a class="nav-link" (click)="showLicense()">Guarantees</a>
+          <p-dialog header="LICENSE AGREEMENT" [(visible)]="displayLicense" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            THIS AGREEMENT is entered into as of 2020 COMPANY NAME SWMedia.azurewebsites.net
+            <br><hr><br>
+            WHEREAS, Licensee wishes to license software for the purpose of protecting and
+            NEAR desires to license this software to licensee.
+            NOW THEREFORE, the parties hereto agree as follows:
+            <br><hr><br>
+            1. GRANT OF LICENSE
+            Subject to the terms and conditions of the Agreement, NEAR grants to Licensee a
+            non-exclusive, non-transferable license to use the software identified in Exhibit A (the "Licensed
+            Programs") for the purpose of xxxxxxxxxxxxxxxxxxxxxxxx. Licensee may use the Licensed
+            Programs in executable format for its own use, and may translate or modify the licensed
+            programs or incorporate them into other software. Licensee may not, however, transfer or
+            sublicense the Licensed Programs to any third party, in whole or in part, in any form, whether
+            modified or unmodified.
+            <br><hr><br>
+            2. CONSIDERATION TO NEAR
+            a. Licensee shall pay, upon delivery of the Licensed Programs, the license fees set
+            forth in Exhibit A attached hereto.
+            b. License fees do not include any shipping, duties, bank fees, sales, use, excise or
+            similar taxes due. If Licensor is required to pay any such amounts, Licensee shall reimburse
+            Licensor in full.
+            <br><hr><br>
+            3. COPIES
+            Licensee may make copies of the Licensed Program in executable code form as
+            necessary for use by Licensee and for backup or archive purposes. Licensee agrees to maintain
+            records of the location and use of each copy, in whole or in part, of the Licensed Programs. Each
+            Licensed Program is copyrighted but unpublished by NEAR. Licensee agrees to reproduce and
+            apply the copyright notice and proprietary notice of NEAR to all copies made hereunder, in
+            whole or in part and in any form, of Licensed Programs.
+            <br><hr><br>
+            4. OWNERSHIP
+            The original and any copies of the Licensed Programs, made by Licensee, including
+            translations, compilations, partial copies, modifications, and updates, are the property of NEAR.
+            <br><hr><br>
+            5. PROPRIETARY RIGHTS
+            Licensee recognizes that NEAR regards the Licensed Programs as its proprietary
+            information and as confidential trade secrets of great value. Licensee agrees not to provide or to
+            otherwise make available in any form the Licensed Programs, or any portion thereof, to any
+            person other than employees of Licensee without the prior written consent of NEAR. Licensee
+            further agrees to treat the Licensed Programs with at least the same degree of care with which
+            Licensee treats its own confidential information and in no event with less care than is reasonably
+            required to protect the confidentiality of the Licensed Programs.
+            <br><hr><br>
+            6. TERM
+            The license granted hereunder shall continue unless and until terminated pursuant to
+            Section 7 hereof and subject to Licensee's proper performance of its obligations hereunder.
+            <br><hr><br>
+            7. TERMINATION
+            NEAR may terminate this Agreement if Licensee is in default of any of the terms and
+            conditions of this Agreement and fails to correct such default within ten (10) days after written
+            notice thereof from NEAR.
+            <br><hr><br>
+            8. TERMINATION CERTIFICATE
+            In the event of termination, Licensee will immediately discontinue use of the
+            Licensed Programs. Within one (1) month after termination of this Agreement, Licensee will
+            furnish to NEAR a certificate which certifies with respect to each of the Licensed Programs that,
+            through its best effort and to the best of its knowledge, the original and all copies, in whole or in
+            part and in any form, of each of the Licensed Programs have been destroyed. The provisions of
+            Sections 4, 5, 8, 11, and 13 hereof shall survive any termination of this Agreement.
+            <p-footer>
+              <button type="button" pButton icon="pi pi-check" (click)="displayLicense=false" label="I trust you"></button>
+            </p-footer>
+          </p-dialog>
         </li>
       </ul>
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

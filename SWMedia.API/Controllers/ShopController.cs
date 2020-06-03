@@ -43,6 +43,15 @@ namespace SWMedia.API.Controllers
             return Ok(refreshedOrder);
         }
 
+        [HttpPost("disposeOrder")]
+        public void DisposeOrder([FromBody]int userId)
+        {
+            Console.WriteLine(userId);
+            _repo.DisposeOrder(userId);
+
+            return;
+        }
+
         [HttpGet("categories")]
         public async Task<IActionResult> GetCategories()
         {

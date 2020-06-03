@@ -11,6 +11,7 @@ export class ShopNavComponent implements OnInit {
 
   displayContacts: boolean;
   displayDelivery: boolean;
+  displayLicense: boolean;
 
   ngOnInit() {
   }
@@ -21,5 +22,9 @@ export class ShopNavComponent implements OnInit {
 
   showDelivery() {
     this.displayDelivery = true;
+  }
+
+  showLicense() {
+    this.displayLicense = true;
   }
 }
