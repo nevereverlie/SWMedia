@@ -50,6 +50,7 @@ import { OrderResolver } from './shop/_resolvers/order.resolver';
 import { ShopCheckoutComponent } from './shop/shop-checkout/shop-checkout.component';
 import { FilmsService } from './_services/films.service';
 import { ShopFooterComponent } from './shop/shop-footer/shop-footer.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -70,7 +71,8 @@ export function tokenGetter() {
       ShopCartComponent,
       ShopCheckoutComponent,
       SafePipe,
-      ShopFooterComponent
+      ShopFooterComponent,
+      ProfileComponent
    ],
    imports: [
       BrowserModule,

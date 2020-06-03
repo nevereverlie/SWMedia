@@ -74,4 +74,12 @@ export class AuthService {
     });
   }
 
+  GetProfile(id: number) {
+    return this.http.post(this.baseUrl + 'getUserProfile', id);
+  }
+
+  UpdateProfile(user: any) {
+    return this.http.post(this.baseUrl + 'updateUser', user);
+  }
+
 }

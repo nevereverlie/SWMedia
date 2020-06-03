@@ -10,7 +10,6 @@ namespace SWMedia.API.Dtos
         public string Username { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public int Age { get; set; }
         public string SelfDescription { get; set; }
         public string Country { get; set; }
         public string City { get; set; }

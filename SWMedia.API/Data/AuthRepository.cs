@@ -128,9 +128,9 @@ namespace SWMedia.API.Data
             return updatedUser;
         }
 
-        public async Task<User> GetUserProfile(User user)
+        public async Task<User> GetUserProfile(int userId)
         {
-            var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username);
+            var userProfile = await _context.Users.FirstOrDefaultAsync(u => u.UserId == userId);
             if (userProfile == null)
                 return null;
                 

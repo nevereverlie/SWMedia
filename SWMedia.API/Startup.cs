@@ -69,7 +69,7 @@ namespace SWMedia.API
                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
 
-            services.AddAutoMapper(typeof(ChatRepository).Assembly);
+            services.AddAutoMapper(typeof(AuthRepository).Assembly);
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IShopRepository, ShopRepository>();
             services.AddScoped<IChatRepository, ChatRepository>();

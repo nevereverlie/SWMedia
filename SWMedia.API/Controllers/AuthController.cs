@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using SWMedia.API.Data;
 using SWMedia.API.Dtos;
 using SWMedia.API.Models;
+using AutoMapper;
 
 namespace SWMedia.API.Controllers
 {
@@ -19,9 +20,11 @@ namespace SWMedia.API.Controllers
     {
         private IAuthRepository _repo;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
 
-        public AuthController(IAuthRepository repo, IConfiguration config)
+        public AuthController(IAuthRepository repo, IConfiguration config, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
             _config = config;
         }
@@ -29,8 +32,8 @@ namespace SWMedia.API.Controllers
         public async Task<IActionResult> RegisterUser(UserForRegisterDto userForRegisterDto)
         {
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
-            
-            if(await _repo.UserExists(userForRegisterDto.Username))
+
+            if (await _repo.UserExists(userForRegisterDto.Username))
             {
                 return BadRequest("User already exists.");
             }
@@ -45,7 +48,7 @@ namespace SWMedia.API.Controllers
                 SelfDescription = userForRegisterDto.SelfDescription,
                 City = userForRegisterDto.City
             };
-            
+
             var createdUser = await _repo.RegisterUser(userToCreate, userForRegisterDto.Password);
 
             return Ok(createdUser);
@@ -54,53 +57,13 @@ namespace SWMedia.API.Controllers
         [HttpPost("loginGoogleUser")]
         public async Task<IActionResult> LoginGoogleUser(GoogleUser googleUserToLogin)
         {
-            if(!await _repo.GoogleUserExists(googleUserToLogin.Email)){
+            if (!await _repo.GoogleUserExists(googleUserToLogin.Email))
+            {
                 var user = await _repo.RegisterGoogleUser(googleUserToLogin);
             }
 
-                var userFromRepo = await _repo.LoginGoogleUser(googleUserToLogin.Email);
-                //var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
-
-                if (userFromRepo == null)
-                {
-                    return Unauthorized();
-                }
-
-                var claims = new[]
-                {
-                    new Claim(ClaimTypes.NameIdentifier, userFromRepo.GoogleUserId.ToString()),
-                    new Claim(ClaimTypes.Name, userFromRepo.Email),
-                    new Claim(ClaimTypes.GivenName, userFromRepo.FirstName + ' ' + userFromRepo.LastName)
-                };
-
-                var key = new SymmetricSecurityKey(Encoding.UTF8
-                    .GetBytes(_config.GetSection("AppSettings:Token").Value)); 
-
-                var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(claims),
-                    Expires = DateTime.Now.AddDays(1),
-                    SigningCredentials = credentials
-                };
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-
-                return Ok(new {
-                    token = tokenHandler.WriteToken(token)
-                });
-                //return Ok(user);
-            
-                
-        }
-
-        [HttpPost("loginUser")]
-        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
-        {  
-            var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+            var userFromRepo = await _repo.LoginGoogleUser(googleUserToLogin.Email);
+            //var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
 
             if (userFromRepo == null)
             {
@@ -109,12 +72,13 @@ namespace SWMedia.API.Controllers
 
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
-                new Claim(ClaimTypes.Name, userFromRepo.Username)
-            };
+                    new Claim(ClaimTypes.NameIdentifier, userFromRepo.GoogleUserId.ToString()),
+                    new Claim(ClaimTypes.Name, userFromRepo.Email),
+                    new Claim(ClaimTypes.GivenName, userFromRepo.FirstName + ' ' + userFromRepo.LastName)
+                };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8
-                .GetBytes(_config.GetSection("AppSettings:Token").Value)); 
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
@@ -129,7 +93,49 @@ namespace SWMedia.API.Controllers
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return Ok(new {
+            return Ok(new
+            {
+                token = tokenHandler.WriteToken(token)
+            });
+            //return Ok(user);
+
+
+        }
+
+        [HttpPost("loginUser")]
+        public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
+        {
+            var userFromRepo = await _repo.LoginUser(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
+
+            if (userFromRepo == null)
+            {
+                return Unauthorized();
+            }
+
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, userFromRepo.UserId.ToString()),
+                new Claim(ClaimTypes.Name, userFromRepo.Username)
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = credentials
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return Ok(new
+            {
                 token = tokenHandler.WriteToken(token)
             });
         }
@@ -138,8 +144,8 @@ namespace SWMedia.API.Controllers
         public async Task<IActionResult> UpdateUser(UserForUpdateDto userForUpdate)
         {
             userForUpdate.Username = userForUpdate.Username.ToLower();
-            
-            if(!await _repo.UserExists(userForUpdate.Username))
+
+            if (!await _repo.UserExists(userForUpdate.Username))
             {
                 return BadRequest("User does not exist.");
             }
@@ -153,20 +159,20 @@ namespace SWMedia.API.Controllers
                 SelfDescription = userForUpdate.SelfDescription,
                 City = userForUpdate.City
             };
-            
+            Console.WriteLine(userToUpdate.Email);
             var updatedUser = await _repo.UpdateUser(userToUpdate, userForUpdate.Password);
 
             return Ok(updatedUser);
         }
 
         [HttpPost("getUserProfile")]
-        public async Task<IActionResult> GetUserProfile(User user)
+        public async Task<IActionResult> GetUserProfile([FromBody]int userId)
         {
-            user.Username = user.Username.ToLower();
+            var userProfile = await _repo.GetUserProfile(userId);
 
-            var userProfile = await _repo.GetUserProfile(user);
-
-            return Ok(userProfile);
+            var profileToReturn = _mapper.Map<UserForListDto>(userProfile);
+            Console.WriteLine(profileToReturn.Username);
+            return Ok(profileToReturn);
         }
     }
 }
