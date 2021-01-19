@@ -2,8 +2,8 @@
 
 ## Description
 
-This is my first big project, made with ASP.NET Core 3 and Angular 8.
+Project made with Angular 9, ASP.NET Core and SQLite in purpose of creating a unique environment for Star Wars fans.
 
-The idea is to impelement an environment where all fans of Star Wars universe (just like me) can chat, buy merch in online shop and see/buy films online. So the goal is to unite all of these features in one resourse.
+It consists of the marketplace page where various merch and cool things can be bought, films page where one can look through all episodes of the saga and watch trailers, and chat page for fanbase to chat over different topics.
 
-Hosted at: https://swmedia.azurewebsites.net
+The application uses REST approach and is REST-based (Web API). As ORM I for this project I used MS Entity Framework Core.
